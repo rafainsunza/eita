@@ -1,1 +1,24 @@
 @use "./variables"
+
+@font-face
+    font-family: gearedSlab
+    src: url('../assets/fonts/gearedSlab/GearedSlab.ttf') format("truetype")
+    font-weight: normal
+    font-style: normal
+
+html,
+body
+    height: 100%
+
+body
+    font-family: "gearedSlab", sans-serif
+    font-size: 24px
+    background-color: variables.$very-light-grey
+    padding: 20px 30px
+
+.logo
+    width: 175px
+
+.home-link
+    display: flex
+    width: max-content
