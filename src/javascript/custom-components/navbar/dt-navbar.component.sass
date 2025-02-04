@@ -70,13 +70,20 @@
     align-items: center
     position: relative
     width: 100%
-    padding: 15px 30px
+    padding: 15px
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1)
     border-right: 1px solid variables.$light-grey
     background-color: white
 
     @media (min-width: variables.$breakpoint-md)
+        padding: 15px 30px
         justify-content: flex-start
+
+    @media (min-width: variables.$breakpoint-lg)
+        padding: 15px 100px
+
+    @media (min-width: variables.$breakpoint-xl)
+        padding: 15px 15%
 
     &-items
         position: absolute
@@ -94,6 +101,7 @@
 
         &.open
             transform: translateY(0)
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1)
 
         @media (min-width: variables.$breakpoint-md)
             z-index: auto
@@ -104,9 +112,10 @@
             height: auto
             margin-left: auto
             padding: 0
+            box-shadow: none
 
-        @media (min-width: variables.$breakpoint-md-lg)
-            margin-left: 20%
+        // @media (min-width: variables.$breakpoint-md-lg)
+        //     margin-left: 20%
 
     &-link
         position: relative
@@ -114,6 +123,7 @@
         width: 115px
         text-align: center
         color: variables.$blue
+        transition: color 0.3s ease
 
         @media (min-width: variables.$breakpoint-md)
             width: max-content
@@ -173,6 +183,8 @@
         background-color: variables.$blue
         text-align: center
         color: white
+        font-size: 20px
+        transition: background-color 0.3s ease
 
         @media (min-width: variables.$breakpoint-md)
             border-bottom: 1px solid variables.$light-blue

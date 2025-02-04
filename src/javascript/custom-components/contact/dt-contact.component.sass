@@ -1,0 +1,145 @@
+@use '../../../styles/_variables'
+
+*
+    padding: 0
+    margin: 0
+    box-sizing: border-box
+    text-decoration: none
+    font-family: din
+    color: variables.$black
+
+.alt-font
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+    font-size: 16px
+    display: flex
+    align-items: center
+
+.submit-button
+    font-size: 22px
+    color: white
+    background-color: variables.$blue
+    width: 200px
+    padding: 7.5px 15px
+    border-radius: 20px
+    border: none
+    position: relative
+    overflow: hidden
+    transition: background-color 0.3s ease
+    z-index: 1
+
+    &::after
+        content: ''
+        position: absolute
+        top: 0
+        left: -100%
+        width: 100%
+        height: 100%
+        background-color: variables.$light-blue
+        transition: left 0.3s ease
+        z-index: -1
+
+    &:hover
+        background-color: variables.$light-blue
+        cursor: pointer
+
+        &::after
+            left: 0
+
+.contact
+    &-icon
+        width: 20px
+        height: 25px
+
+    &-card
+        display: flex
+        flex-direction: column
+        padding: 50px 15px
+
+        @media (min-width: variables.$breakpoint-md)
+            padding: 50px 30px
+            flex-direction: row
+            justify-content: space-between
+
+        @media (min-width: variables.$breakpoint-lg)
+            padding: 100px
+
+        @media (min-width: variables.$breakpoint-xl)
+            padding: 100px 15%
+
+        &-info
+            @media (min-width: variables.$breakpoint-md)
+                width: 45%
+
+            @media (min-width: variables.$breakpoint-md-lg)
+                width: 40%
+
+        &-message
+            margin-bottom: 25px
+        &-title
+            font-family: gearedSlab
+            margin-bottom: 15px
+            color: variables.$blue
+
+            @media (min-width: variables.$breakpoint-lg)
+                font-size: 46px
+        &-text
+            margin-bottom: 15px
+
+        &-option
+            padding: 10px 0
+            display: flex
+
+            & a
+                transition: color 0.2s ease
+                display: flex
+                &:hover,
+                &:hover span
+                    color: variables.$blue
+
+            & svg
+                align-self: flex-start
+                margin-right: 15px
+                fill: variables.$blue
+
+        &-form
+            display: flex
+            flex-direction: column
+
+            & label
+                font-size: 20px
+
+            & input
+                font-size: 20px
+                padding: 7.5px 15px
+                margin: 10px 0 15px 0
+                border: none
+                border-radius: 2.5px
+                outline: 1px solid variables.$light-grey
+                transition: transform 0.2s
+
+                &:focus
+                    outline: 2px solid variables.$blue
+                    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1)
+                    transform: scale(1.02)
+
+            & textarea
+                height: 100px
+                padding: 7.5px 15px
+                border: none
+                border-radius: 2.5px
+                outline: 1px solid variables.$light-grey
+                margin: 10px 0 15px 0
+                font-size: 20px
+                transition: transform 0.2s
+
+                &:focus
+                    outline: 2px solid variables.$blue
+                    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1)
+                    transform: scale(1.02)
+
+            &-container
+                margin-top: 25px
+
+                @media (min-width: variables.$breakpoint-md)
+                    width: 45%
+                    margin: 0

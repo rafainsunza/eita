@@ -2,6 +2,8 @@ import './styles/reset.css'
 import './styles/main.sass'
 
 import './javascript/custom-components/navbar/dt-navbar'
+import './javascript/custom-components/home/dt-home'
+import './javascript/custom-components/contact/dt-contact'
 
 import { fetchImage } from './javascript/utils'
 

@@ -29,7 +29,8 @@ class DtNavbar extends HTMLElement {
 
         this.openButton.addEventListener('click', () => { this.openNav() });
         this.closeButton.addEventListener('click', () => { this.closeNav() });
-        this.navLinks.forEach((link) => { link.addEventListener('click', (e) => this.toggleSubmenu(e)) })
+        this.navLinks.forEach((link) => { link.addEventListener('click', (e) => this.toggleSubmenu(e)) });
+        window.addEventListener('resize', () => this.navItems.classList.remove('open'));
     }
 
     toggleSubmenu(e) {
