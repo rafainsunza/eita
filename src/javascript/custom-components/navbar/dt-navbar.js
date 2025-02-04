@@ -20,6 +20,7 @@ class DtNavbar extends HTMLElement {
 
         this.nav = this.shadowRoot.querySelector('.nav');
         this.navItems = this.shadowRoot.querySelector('.nav-items');
+        this.navLinks = this.shadowRoot.querySelectorAll('.nav-link');
         this.openButton = this.shadowRoot.querySelector('.open-button');
         this.closeButton = this.shadowRoot.querySelector('.close-button');
 
@@ -28,6 +29,22 @@ class DtNavbar extends HTMLElement {
 
         this.openButton.addEventListener('click', () => { this.openNav() });
         this.closeButton.addEventListener('click', () => { this.closeNav() });
+        this.navLinks.forEach((link) => { link.addEventListener('click', (e) => this.toggleSubmenu(e)) })
+    }
+
+    toggleSubmenu(e) {
+        const nextSibling = e.target.nextElementSibling;
+        if (nextSibling === null) { return }
+
+        const submenus = this.shadowRoot.querySelectorAll('.submenu');
+        const isOpen = nextSibling.classList.contains('open')
+
+        submenus.forEach((menu) => menu.classList.remove('open'));
+
+        if (!isOpen) {
+            nextSibling.classList.add('open');
+        }
+
     }
 
     openNav() {
@@ -35,6 +52,9 @@ class DtNavbar extends HTMLElement {
     }
 
     closeNav() {
+        const submenus = this.shadowRoot.querySelectorAll('.submenu');
+
+        submenus.forEach((menu) => menu.classList.remove('open'));
         this.navItems.classList.remove('open');
     }
 

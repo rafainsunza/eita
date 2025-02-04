@@ -144,3 +144,49 @@
             &::after
                 transform: scaleX(1)
                 transform-origin: bottom left
+
+.submenu
+    display: flex
+    flex-direction: column
+    width: 100%
+    font-size: 18px
+    font-family: din
+    transition: max-height 0.3s ease-out, opacity 0.1s
+    overflow: hidden
+    max-height: 0
+    opacity: 0
+
+    @media (min-width: variables.$breakpoint-md)
+        position: absolute
+        top: 62px
+        left: 50%
+        transform: translateX(-50%)
+        width: 300%
+
+    &.open
+        transition: max-height 0.3s ease-out, opacity 0.2s
+        max-height: 500px
+        opacity: 1
+
+    &-link
+        padding: 20px 0
+        background-color: variables.$blue
+        text-align: center
+        color: white
+
+        @media (min-width: variables.$breakpoint-md)
+            border-bottom: 1px solid variables.$light-blue
+
+        &:hover
+            background-color: variables.$light-blue
+            cursor: pointer
+
+    &-link-container
+        display: flex
+        flex-direction: column
+        align-items: center
+        width: 100%
+
+        @media (min-width: variables.$breakpoint-md)
+            position: relative
+            width: max-content
