@@ -4,6 +4,7 @@ import './styles/main.sass'
 import './javascript/custom-components/navbar/dt-navbar'
 import './javascript/custom-components/home/dt-home'
 import './javascript/custom-components/contact/dt-contact'
+import './javascript/custom-components/schedule/dt-schedule'
 
 import { fetchImage } from './javascript/utils'
 

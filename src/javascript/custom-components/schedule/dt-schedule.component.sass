@@ -1,0 +1,88 @@
+@use '../../../styles/_variables'
+
+*
+    padding: 0
+    margin: 0
+    box-sizing: border-box
+    text-decoration: none
+    font-family: 'din'
+
+.separator
+    margin: 0 7.5px
+
+    @media (min-width: variables.$breakpoint-sm)
+        margin: 0 15px
+
+.day
+    position: absolute
+    left: -1px
+    top: -1px
+    z-index: 1
+    display: flex
+    align-items: center
+    justify-content: center
+    height: calc(100% + 2px)
+    width: 30%
+    border-radius: 45px
+    background-color: variables.$blue
+    color: white
+
+.hours
+    position: absolute
+    right: 0
+    height: 100%
+    display: flex
+    align-items: center
+    justify-content: flex-end
+    padding-right: 15px
+    width: 100%
+    border-radius: 45px
+    background-color: variables.$light-blue
+    color: white
+    outline: 1px solid variables.$blue
+
+    @media (min-width: variables.$breakpoint-sm)
+        padding-right: 15%
+
+.card
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: center
+    padding: 50px 5px 0 5px
+    font-size: 22px
+
+    @media (min-width: variables.$breakpoint-sm)
+        padding: 50px 15px 0 15px
+        font-size: 24px
+
+    @media (min-width: variables.$breakpoint-lg)
+        padding: 100px 0 0 0
+
+    &-title
+        font-family: 'gearedSlab'
+        color: variables.$blue
+        font-size: 36px
+        margin-bottom: 30px
+        text-align: center
+
+        @media (min-width: variables.$breakpoint-lg)
+            font-size: 46px
+
+    &-body
+        width: 100%
+
+        @media (min-width: variables.$breakpoint-sm)
+            width: 450px
+
+    &-item
+        position: relative
+        display: flex
+        justify-content: space-between
+        width: 100%
+        height: 50px
+        border-radius: 45px
+        margin-bottom: 10px
+
+.closed
+    padding-right: 30%

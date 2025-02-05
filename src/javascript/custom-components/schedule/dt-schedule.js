@@ -1,5 +1,5 @@
-import html from './dt-home.html';
-import style from './dt-home.component.sass';
+import html from './dt-schedule.html';
+import style from './dt-schedule.component.sass';
 
 import { fetchImage } from '../../utils';
 
@@ -12,7 +12,7 @@ template.innerHTML = `
     ${html}
 `;
 
-class DtHome extends HTMLElement {
+class DtSchedule extends HTMLElement {
     constructor() {
         super();
         this.attachShadow({ mode: 'open' });
@@ -21,6 +21,7 @@ class DtHome extends HTMLElement {
     }
 
 }
-customElements.define('dt-home', DtHome);
+customElements.define('dt-schedule', DtSchedule);
 
-export { DtHome }
+export { DtSchedule }
+
