@@ -1,8 +1,6 @@
 import html from './dt-contact.html';
 import style from './dt-contact.component.sass';
 
-import { fetchImage } from '../../utils';
-
 const template = document.createElement('template');
 
 template.innerHTML = `

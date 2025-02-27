@@ -9,5 +9,3 @@ import './javascript/custom-components/about/dt-about'
 
 import { fetchImage } from './javascript/utils'
 
-
-// fetchImage('./assets/icons/eita_logo.png', document.querySelector('header').querySelector('.home-link'), 'logo')

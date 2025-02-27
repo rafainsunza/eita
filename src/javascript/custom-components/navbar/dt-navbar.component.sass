@@ -12,9 +12,9 @@
             transform: rotate(180deg)
 
     &-icon
-        width: 10px
+        width: 7.5px
         margin-left: 7.5px
-        fill: variables.$black
+        fill: variables.$blue
         transition: transform 0.3s ease
 
 .logo
@@ -135,13 +135,15 @@
         position: relative
         padding: 15px 0
         width: 115px
-        text-align: center
         color: variables.$blue
         transition: color 0.3s ease
         border: none
         background-color: transparent
         font-size: 24px
         font-family: gearedSlab
+        display: flex
+        align-items: center
+        justify-content: center
 
         @media (min-width: variables.$breakpoint-md)
             width: max-content
@@ -173,6 +175,9 @@
         &:hover
             color: variables.$light-blue
             cursor: pointer
+
+            .dropdown-icon
+                fill: variables.$light-blue
 
             &::after
                 transform: scaleX(1)

@@ -18,56 +18,63 @@ class DtAbout extends HTMLElement {
         this.attachShadow({ mode: 'open' });
         this.shadowRoot.appendChild(template.content.cloneNode(true));
 
-        this.dtNavBar = document.querySelector('dt-navbar');
         this.backToTopBtn = this.shadowRoot.querySelector('.back-to-top-btn');
-
-        const submenuLinks = this.dtNavBar.shadowRoot.querySelector('.submenu.about').children;
 
         fetchImage('../../../assets/images/fm-alexander.jpg', this.shadowRoot.querySelector('.fm-alexander-img-container'), 'fm-alexander-img')
 
-        Array.from(submenuLinks).forEach(link => {
-            link.addEventListener('click', (e) => this.handleSubmenuClick(e));
-        });
-        this.backToTopBtn.addEventListener('click', () => { this.scrollToSection(this, this.dtNavBar) });
+        this.handleSubmenuClick = (e) => this.scrollToSection(e);
+        this.handleBackToTopClick = (e) => this.scrollToSection(e);
 
+        // document.addEventListener('submenu-click', this.handleSubmenuClick);
+        // this.backToTopBtn.addEventListener('click', this.handleBackToTopClick)
+        document.addEventListener('submenu-click', (e) => this.scrollToSection(e));
+        this.backToTopBtn.addEventListener('click', (e) => this.scrollToSection(e));
     }
 
-    handleSubmenuClick(e) {
-        const clickedLink = e.target.classList[1];
-        let about = document.querySelector('dt-about');
-        const main = document.body.querySelector('main');
+    // disconnectedCallback() {
+    //     document.removeEventListener('submenu-click', this.handleSubmenuClick);
+    //     this.backToTopBtn.removeEventListener('click', this.handleBackToTopClick);
+    // }
 
-        if (!about) {
-            about = document.createElement('dt-about');
-            main.innerHTML = '';
-            main.appendChild(about)
+    scrollToSection(e) {
+        const main = document.querySelector('main');
+        const children = Array.from(main.children);
+        const navbar = document.querySelector('dt-navbar');
+        const clickedSubmenuIsAbout = e.detail.clickedSubmenu === navbar.shadowRoot.querySelector('.submenu.about')
+        const backToTopClicked = e.target.closest('button') === this.backToTopBtn;
+        let scrollTarget;
+
+        children.forEach((child) => {
+            if (child !== this) {
+                main.removeChild(child);
+            }
+        });
+
+        this.classList.remove('invisible');
+
+
+        if (!clickedSubmenuIsAbout && !backToTopClicked) { return }
+
+        backToTopClicked ?
+            scrollTarget = this.shadowRoot.querySelector('.all') :
+            scrollTarget = this.shadowRoot.querySelector('.' + e.detail.scrollTargetClass);
+
+        // Safari seems to not handle scrollIntoView and/or scroll behavior correctly,
+        // so to ensure correct scrolling I set the scroll behavior in safari to auto
+        const browserIsSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+        let scrollBehavior;
+
+        browserIsSafari ? scrollBehavior = 'auto' : scrollBehavior = 'smooth';
+
+        const scrollOptions = {
+            behavior: scrollBehavior,
+            block: 'nearest'
         }
 
-
-        requestAnimationFrame(() => {
-            setTimeout(() => {
-                if (about.shadowRoot) {
-                    const sections = about.shadowRoot.querySelectorAll('.section-container');
-                    const all = about.shadowRoot.querySelector('.all');
-                    let scrollTarget;
-
-                    about.classList.remove('invisible');
-
-                    clickedLink === 'all' ? scrollTarget = all : scrollTarget = [...sections].find(section => section.classList.contains(clickedLink));
-
-                    this.scrollToSection(about, scrollTarget);
-                }
-            }, 100);
-        });
-
-        this.dtNavBar.closeNav()
+        scrollTarget.scrollIntoView({ behavior: scrollBehavior });
+        navbar.closeNav();
     }
 
-    scrollToSection(about, scrollTarget) {
-        const scrollAdjustment = 125;
-        const offsetTop = scrollTarget.offsetTop - scrollAdjustment;
-        about.scrollTo({ top: offsetTop, behavior: 'smooth' });
-    }
 
 }
 customElements.define('dt-about', DtAbout);

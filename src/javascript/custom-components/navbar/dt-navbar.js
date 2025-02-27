@@ -46,6 +46,7 @@ class DtNavbar extends HTMLElement {
                 this.navItems.classList.remove('open');
             }
         });
+
         this.submenus.forEach((menu) => {
             menu.addEventListener('mouseleave', () => {
                 if (window.innerWidth >= 768) {
@@ -55,33 +56,45 @@ class DtNavbar extends HTMLElement {
                     menu.classList.remove('open');
                 }
             });
+
+            menu.addEventListener('click', (e) => {
+                const clickedLink = e.target;
+                const clickedSubmenu = clickedLink.parentElement;
+                const scrollTargetClass = clickedLink.classList[1];
+
+                const event = new CustomEvent('submenu-click', {
+                    detail: {
+                        scrollTargetClass: scrollTargetClass,
+                        clickedSubmenu: clickedSubmenu
+                    },
+                    bubbles: true,
+                    composed: true
+                })
+
+                this.dispatchEvent(event);
+            })
         });
     }
 
     handleNavClick(e) {
         const clickedNav = e.target;
+
         if (clickedNav.tagName === 'A') {
-            const destination = clickedNav.classList[1];
-            const page = document.createElement(`dt-${destination}`)
-            const main = document.querySelector('main');
-
-
             const dropdownButtons = this.shadowRoot.querySelectorAll('.dropdown-button');
             const submenus = this.shadowRoot.querySelectorAll('.submenu');
             dropdownButtons.forEach((button) => button.classList.remove('open'));
             submenus.forEach((menu) => menu.classList.remove('open'));
             this.navItems.classList.remove('open');
 
-            main.innerHTML = '';
-            main.appendChild(page);
+            this.appendCustomElement(clickedNav.classList[1])
         }
     }
 
     toggleSubmenu(e) {
         const dropdownButton = e.target.closest('button');
-        if (dropdownButton === null) { return }
+        if (!dropdownButton) { return }
         const nextSibling = e.target.closest('button').nextElementSibling;
-        if (nextSibling === null) { return }
+        if (!nextSibling) { return }
 
         const dropdownButtons = this.shadowRoot.querySelectorAll('.dropdown-button');
         const submenus = this.shadowRoot.querySelectorAll('.submenu');
@@ -105,6 +118,25 @@ class DtNavbar extends HTMLElement {
 
         submenus.forEach((menu) => menu.classList.remove('open'));
         this.navItems.classList.remove('open');
+    }
+
+    appendCustomElement(className) {
+        const element = document.createElement(`dt-${className}`);
+        const main = document.querySelector('main');
+        const children = Array.from(main.children);
+        const aboutElement = document.querySelector('dt-about');
+
+        children.forEach((child) => {
+            if (child !== aboutElement) {
+                main.removeChild(child);
+
+            } else {
+                child.classList.add('invisible');
+            }
+
+        });
+
+        main.appendChild(element);
     }
 
 }

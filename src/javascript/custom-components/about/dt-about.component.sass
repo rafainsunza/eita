@@ -12,24 +12,32 @@
     display: block
     max-height: 100vh
     overflow-y: auto
+    scrollbar-width: none
 
 .back-to-top
     &-btn
         position: fixed
-        bottom: 25px
-        right: 25px
-        width: 50px
+        bottom: 0
+        right: 0
+        width: 60px
+        height: 60px
+        padding: 0 15px 10px 0
+        border-radius: 100% 0 0 0
         display: flex
-        background-color: transparent
+        justify-content: flex-end
+        align-items: flex-end
+        background-color: variables.$blue
         border: none
         cursor: pointer
-        transition: transform 0.2s ease-out
+        transition: background-color 0.2s ease-out
         &:hover
-            transform: scale(1.02) translateY(-3px)
-            animation: pulse 0.4s ease-in-out
+            background-color: variables.$light-blue
+            .back-to-top-icon
+                transform: scale(1.1)
 
     &-icon
-        fill: variables.$black
+        height: 20px
+        fill: white
         background-color: transparent
 
 figcaption
@@ -62,7 +70,9 @@ figcaption
 
 .main
     &-container
+        scroll-margin-top: 100px
         padding: 50px 15px
+
         @media (min-width: variables.$breakpoint-sm-md)
             padding: 50px 55px
 
@@ -71,6 +81,7 @@ figcaption
 
         @media (min-width: variables.$breakpoint-lg)
             padding: 100px
+            scroll-margin-top: 100px
 
         @media (min-width: variables.$breakpoint-xl)
             padding: 100px 15%
@@ -87,6 +98,7 @@ figcaption
 
     &-container
         margin: 75px 0
+        scroll-margin-top: 50px
 
     &-title
         width: 100%
