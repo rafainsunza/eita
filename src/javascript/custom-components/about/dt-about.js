@@ -22,19 +22,9 @@ class DtAbout extends HTMLElement {
 
         fetchImage('../../../assets/images/fm-alexander.jpg', this.shadowRoot.querySelector('.fm-alexander-img-container'), 'fm-alexander-img')
 
-        this.handleSubmenuClick = (e) => this.scrollToSection(e);
-        this.handleBackToTopClick = (e) => this.scrollToSection(e);
-
-        // document.addEventListener('submenu-click', this.handleSubmenuClick);
-        // this.backToTopBtn.addEventListener('click', this.handleBackToTopClick)
         document.addEventListener('submenu-click', (e) => this.scrollToSection(e));
         this.backToTopBtn.addEventListener('click', (e) => this.scrollToSection(e));
     }
-
-    // disconnectedCallback() {
-    //     document.removeEventListener('submenu-click', this.handleSubmenuClick);
-    //     this.backToTopBtn.removeEventListener('click', this.handleBackToTopClick);
-    // }
 
     scrollToSection(e) {
         const main = document.querySelector('main');
@@ -44,6 +34,8 @@ class DtAbout extends HTMLElement {
         const backToTopClicked = e.target.closest('button') === this.backToTopBtn;
         let scrollTarget;
 
+        if (!clickedSubmenuIsAbout && !backToTopClicked) { return }
+
         children.forEach((child) => {
             if (child !== this) {
                 main.removeChild(child);
@@ -51,9 +43,6 @@ class DtAbout extends HTMLElement {
         });
 
         this.classList.remove('invisible');
-
-
-        if (!clickedSubmenuIsAbout && !backToTopClicked) { return }
 
         backToTopClicked ?
             scrollTarget = this.shadowRoot.querySelector('.all') :
@@ -65,11 +54,6 @@ class DtAbout extends HTMLElement {
         let scrollBehavior;
 
         browserIsSafari ? scrollBehavior = 'auto' : scrollBehavior = 'smooth';
-
-        const scrollOptions = {
-            behavior: scrollBehavior,
-            block: 'nearest'
-        }
 
         scrollTarget.scrollIntoView({ behavior: scrollBehavior });
         navbar.closeNav();

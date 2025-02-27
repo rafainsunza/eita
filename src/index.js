@@ -6,6 +6,7 @@ import './javascript/custom-components/home/dt-home'
 import './javascript/custom-components/contact/dt-contact'
 import './javascript/custom-components/schedule/dt-schedule'
 import './javascript/custom-components/about/dt-about'
+import './javascript/custom-components/lessons/dt-lessons'
 
 import { fetchImage } from './javascript/utils'
 
