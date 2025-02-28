@@ -19,6 +19,17 @@ class DtLessons extends HTMLElement {
         this.shadowRoot.appendChild(template.content.cloneNode(true));
 
         this.backToTopBtn = this.shadowRoot.querySelector('.back-to-top-btn');
+        const imgContainers = Array.from(this.shadowRoot.querySelectorAll('.content-img-container'));
+
+        // imgContainers.forEach((container) => {
+        //     fetchImage('../../../assets/images/hands.jpg', container, 'content-img');
+        // });
+
+        fetchImage('../../../assets/images/hands.jpg', imgContainers[0], 'content-img');
+        fetchImage('../../../assets/images/individual-lesson-2.jpg', imgContainers[1], 'content-img');
+        fetchImage('../../../assets/images/individual-lesson-5.jpg', imgContainers[2], 'content-img');
+        fetchImage('../../../assets/images/group-lesson-2.jpg', imgContainers[3], 'content-img');
+        fetchImage('../../../assets/images/group-lesson-1.jpeg', imgContainers[4], 'resize');
 
         document.addEventListener('submenu-click', (e) => this.handleScrollClick(e));
         this.backToTopBtn.addEventListener('click', (e) => this.handleScrollClick(e));
