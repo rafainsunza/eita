@@ -62,16 +62,20 @@ class DtNavbar extends HTMLElement {
                 const clickedSubmenu = clickedLink.parentElement;
                 const scrollTargetClass = clickedLink.classList[1];
 
-                const event = new CustomEvent('submenu-click', {
-                    detail: {
-                        scrollTargetClass: scrollTargetClass,
-                        clickedSubmenu: clickedSubmenu
-                    },
-                    bubbles: true,
-                    composed: true
-                })
+                this.appendCustomElement(clickedSubmenu.classList[1]);
 
-                this.dispatchEvent(event);
+                setTimeout(() => {
+                    const event = new CustomEvent('submenu-click', {
+                        detail: {
+                            scrollTargetClass: scrollTargetClass,
+                            clickedSubmenu: clickedSubmenu
+                        },
+                        bubbles: true,
+                        composed: true
+                    })
+
+                    this.dispatchEvent(event);
+                }, 50)
             })
         });
     }
@@ -86,7 +90,7 @@ class DtNavbar extends HTMLElement {
             submenus.forEach((menu) => menu.classList.remove('open'));
             this.navItems.classList.remove('open');
 
-            this.appendCustomElement(clickedNav.classList[1])
+            this.appendCustomElement(clickedNav.classList[1]);
         }
     }
 
@@ -124,17 +128,8 @@ class DtNavbar extends HTMLElement {
         const element = document.createElement(`dt-${className}`);
         const main = document.querySelector('main');
         const children = Array.from(main.children);
-        const aboutElement = document.querySelector('dt-about');
 
-        children.forEach((child) => {
-            if (child !== aboutElement) {
-                main.removeChild(child);
-
-            } else {
-                child.classList.add('invisible');
-            }
-
-        });
+        children.forEach((child) => main.removeChild(child));
 
         main.appendChild(element);
     }

@@ -25,4 +25,24 @@ const fetchImage = async (endpoint, targetElement, className) => {
 
 };
 
-export { fetchImage }
+const scrollToSection = (topElement, sectionElement, backToTopClicked) => {
+    let scrollTarget;
+
+    backToTopClicked ?
+        scrollTarget = topElement :
+        scrollTarget = sectionElement;
+
+    scrollTarget.scrollIntoView({ behavior: 'smooth' });
+
+    // Safari seems to not handle scrollIntoView and/or scroll behavior correctly,
+    // so to ensure correct scrolling I set the scroll behavior in safari to auto
+    // for now this is not necessary as scrolling seems consistent but needs further testing
+    // const browserIsSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    // let scrollBehavior;
+    // browserIsSafari ? scrollBehavior = 'auto' : scrollBehavior = 'smooth';
+    // scrollTarget.scrollIntoView({ behavior: scrollBehavior });
+
+}
+
+
+export { fetchImage, scrollToSection }
