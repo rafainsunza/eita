@@ -1,5 +1,5 @@
-import html from './dt-lessons.html';
-import style from './dt-lessons.component.sass';
+import html from './dt-courses.html';
+import style from './dt-courses.component.sass';
 
 import { fetchImage, scrollToSection } from '../../utils';
 
@@ -12,20 +12,17 @@ template.innerHTML = `
     ${html}
 `;
 
-class DtLessons extends HTMLElement {
+class DtCourses extends HTMLElement {
     constructor() {
         super();
         this.attachShadow({ mode: 'open' });
         this.shadowRoot.appendChild(template.content.cloneNode(true));
 
         this.backToTopBtn = this.shadowRoot.querySelector('.back-to-top-btn');
-        const imgContainers = Array.from(this.shadowRoot.querySelectorAll('.content-img-container'));
-
-        fetchImage('../../../assets/images/hands.jpg', imgContainers[0], 'content-img');
-        fetchImage('../../../assets/images/individual-lesson-2.jpg', imgContainers[1], 'content-img');
-        fetchImage('../../../assets/images/individual-lesson-5.jpg', imgContainers[2], 'content-img');
-        fetchImage('../../../assets/images/group-lesson-2.jpg', imgContainers[3], 'content-img');
-        fetchImage('../../../assets/images/group-lesson-1.jpeg', imgContainers[4], 'resize');
+        const imageContainers = this.shadowRoot.querySelectorAll('.section-image-container');
+        fetchImage('../../../assets/images/individual-lesson-3.jpg', imageContainers[0], 'section-image');
+        fetchImage('../../../assets/images/individual-lesson-4.jpg', imageContainers[1], 'section-image');
+        fetchImage('../../../assets/images/individual-lesson-1.jpg', imageContainers[2], 'section-image');
 
         document.addEventListener('submenu-click', (e) => this.handleScrollClick(e));
         this.backToTopBtn.addEventListener('click', (e) => this.handleScrollClick(e));
@@ -33,10 +30,10 @@ class DtLessons extends HTMLElement {
 
     handleScrollClick(e) {
         const navbar = document.querySelector('dt-navbar');
-        const clickedSubmenuIsLessons = e.detail.clickedSubmenu === navbar.shadowRoot.querySelector('.submenu.lessons')
+        const clickedSubmenuIsCourses = e.detail.clickedSubmenu === navbar.shadowRoot.querySelector('.submenu.courses')
         const backToTopClicked = e.target.closest('button') === this.backToTopBtn;
 
-        if (!clickedSubmenuIsLessons && !backToTopClicked) { return }
+        if (!clickedSubmenuIsCourses && !backToTopClicked) { return }
 
         navbar.closeNav()
         scrollToSection(
@@ -47,6 +44,6 @@ class DtLessons extends HTMLElement {
     }
 
 }
-customElements.define('dt-lessons', DtLessons);
+customElements.define('dt-courses', DtCourses);
 
-export { DtLessons }
+export { DtCourses }
