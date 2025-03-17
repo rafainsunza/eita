@@ -20,12 +20,6 @@
 .logo
     width: 175px
 
-    @media (min-width: variables.$breakpoint-md)
-        width: 150px
-
-    @media (min-width: 800px)
-        width: 175px
-
     &-small
         width: 50px
         order: -1
@@ -160,17 +154,14 @@
             bottom: 0
             left: 0
             width: 100%
-            height: 2px
-            background-color: variables.$light-blue
+            height: 3px
+            background-color: variables.$blue
             transform: scaleX(0)
             transform-origin: bottom right
             transition: transform 0.3s ease
 
             @media (min-width: variables.$breakpoint-md)
-                bottom: -34px
-
-            @media (min-width: 800px)
-                bottom: -39px
+                bottom: -40px
 
         &:hover
             color: variables.$light-blue
