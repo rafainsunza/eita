@@ -19,17 +19,18 @@ class DtAbout extends HTMLElement {
         this.shadowRoot.appendChild(template.content.cloneNode(true));
 
         this.backToTopBtn = this.shadowRoot.querySelector('.back-to-top-btn');
-        const imgContainers = this.shadowRoot.querySelectorAll('.li-img-container');
+        const imgContainers = this.shadowRoot.querySelectorAll('.professor-card-img-container');
         const portraits = [
-            '../../../assets/images/portrait-georgia-2-cropped.jpg',
-            '../../../assets/images/portrait-reinaldo.jpg',
-            '../../../assets/images/portrait-merran.jpg'
+            './assets/images/portrait-georgia.jpg',
+            './assets/images/portrait-reinaldo.jpg',
+            './assets/images/portrait-merran.jpg',
+            './assets/images/portrait-thomas.jpg'
         ];
 
         portraits.forEach((portrait, index) => {
-            fetchImage(portrait, imgContainers[index], 'li-img');
+            fetchImage(portrait, imgContainers[index], 'professor-card-img');
         });
-        fetchImage('../../../assets/images/fm-alexander.jpg', this.shadowRoot.querySelector('.fm-alexander-img-container'), 'fm-alexander-img')
+        fetchImage('./assets/images/fm-alexander.jpg', this.shadowRoot.querySelector('.fm-alexander-img-container'), 'fm-alexander-img')
 
         document.addEventListener('submenu-click', (e) => this.handleScrollClick(e));
         this.backToTopBtn.addEventListener('click', (e) => this.handleScrollClick(e));

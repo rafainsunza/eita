@@ -1,0 +1,63 @@
+{
+  "professors": {
+    "title": "Formação de Professores",
+    "description": "A formação ocorre ao longo de 3 anos, dividida em 35 semanas por ano. As aulas são de manhã, 5 dias por semana, com 3 horas diárias — 80% prática e 20% teoria. Ao final, o curso soma 1600 horas e pode ser concluído em até 5 anos.",
+    "cards_title": "Os 3 anos de formação",
+    "cards": {
+      "card_1": {
+        "title": "Primeiro Ano",
+        "description": "No primeiro ano, o foco é desenvolver a capacidade de pensar e agir com base nos princípios da Técnica Alexander. Antes de começar a trabalhar com outras pessoas, você aprofunda seu entendimento dos fundamentos da Técnica."
+      },
+      "card_2": {
+        "title": "Segundo Ano",
+        "description": "No segundo ano, o foco está no refinamento do desenvolvimento pessoal, com aprimoramento das habilidades manuais e dos procedimentos físicos da Técnica Alexander."
+      },
+      "card_3": {
+        "title": "Último Ano",
+        "description": "No terceiro e último ano, você consolida tudo o que aprendeu nos anos anteriores, desenvolvendo a autonomia necessária para atuar de forma independente."
+      }
+    },
+
+    "extra_descriptions": {
+      "description_1": "Durante o processo de se tornar professor(a) da Técnica Alexander, você estará envolvido(a) física, mental, emocional e espiritualmente, vivenciando mudanças profundas em si mesmo(a).",
+      "description_2": "Essa jornada transformadora trará experiências significativas, e estaremos ao seu lado para oferecer o apoio e a segurança necessários, permitindo que você assimile a Técnica no seu próprio ritmo.",
+      "description_3": "Cada grupo conta com, no máximo, 5 alunos por professor, garantindo um acompanhamento individualizado e personalizado."
+    }
+  },
+
+  "vocal": {
+    "title": "CantARolar",
+    "description": "Um curso para quem quer explorar e desenvolver a voz de forma saudável, prática e divertida. Em 10 aulas distribuídas em 7 módulos, você vai aprender a usar sua voz com mais liberdade, controle e confiança — equilibrando respiração, projeção e ressonância sem esforço excessivo. Seja para falar ou cantar, o CantARolar te ajuda a desbloquear seu potencial vocal com leveza e prazer.",
+    "cards_title": "Os 7 módulos",
+    "cards": {
+      "card_1": {
+        "title": "A Voz",
+        "description": "Vamos falar sobre a motricidade fina da voz, projeção vocal, ressonância e os espaços da nossa caixa sonora."
+      },
+      "card_2": {
+        "title": "Afinação e Tessitura",
+        "description": "Descubra o alcance natural da sua voz e aprenda a explorar diferentes registros com leveza."
+      },
+      "card_3": {
+        "title": "O Mastro da Voz",
+        "description": "Como a coluna vertebral dá suporte à sua voz e influencia sua projeção vocal."
+      },
+      "card_4": {
+        "title": "A Âncora da Voz",
+        "description": "O segredo da estabilidade vocal está na relação entre o peso do sacro e a maciez do esterno."
+      },
+      "card_5": {
+        "title": "A Base do Instrumento",
+        "description": "Como a energia que move sua voz começa na base do seu corpo."
+      },
+      "card_6": {
+        "title": "Respiração Natural",
+        "description": "O que é, como funciona e como usá-la a favor da sua expressão vocal."
+      },
+      "card_7": {
+        "title": "As Cores da Voz",
+        "description": "A liberdade de brincar com os diferentes timbres e nuances vocais."
+      }
+    }
+  }
+}

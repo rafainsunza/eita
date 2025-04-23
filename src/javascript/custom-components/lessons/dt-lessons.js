@@ -21,11 +21,11 @@ class DtLessons extends HTMLElement {
         this.backToTopBtn = this.shadowRoot.querySelector('.back-to-top-btn');
         const imgContainers = Array.from(this.shadowRoot.querySelectorAll('.content-img-container'));
 
-        fetchImage('../../../assets/images/hands.jpg', imgContainers[0], 'content-img');
-        fetchImage('../../../assets/images/individual-lesson-2.jpg', imgContainers[1], 'content-img');
-        fetchImage('../../../assets/images/individual-lesson-5.jpg', imgContainers[2], 'content-img');
-        fetchImage('../../../assets/images/group-lesson-2.jpg', imgContainers[3], 'content-img');
-        fetchImage('../../../assets/images/group-lesson-1.jpeg', imgContainers[4], 'resize');
+        fetchImage('./assets/images/hands.jpg', imgContainers[0], 'content-img');
+        fetchImage('./assets/images/individual-lesson-2.jpg', imgContainers[1], 'content-img');
+        fetchImage('./assets/images/individual-lesson-5.jpg', imgContainers[2], 'content-img');
+        fetchImage('./assets/images/group-lesson-3.jpg', imgContainers[3], 'content-img');
+        fetchImage('./assets/images/group-lesson-4.jpg', imgContainers[4], 'content-img-last');
 
         document.addEventListener('submenu-click', (e) => this.handleScrollClick(e));
         this.backToTopBtn.addEventListener('click', (e) => this.handleScrollClick(e));

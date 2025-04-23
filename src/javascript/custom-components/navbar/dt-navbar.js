@@ -25,8 +25,8 @@ class DtNavbar extends HTMLElement {
         this.closeButton = this.shadowRoot.querySelector('.close-button');
         this.submenus = this.shadowRoot.querySelectorAll('.submenu');
 
-        fetchImage('../../../assets/icons/eita_logo.png', this.nav.querySelector('.home-link'), 'logo')
-        fetchImage('../../../assets/icons/favicon.png', this.navItems.querySelector('.logo-button-container'), 'logo-small');
+        fetchImage('./assets/icons/eita_logo.png', this.nav.querySelector('.home-link'), 'logo')
+        fetchImage('./assets/icons/favicon.png', this.navItems.querySelector('.logo-button-container'), 'logo-small');
 
         this.openButton.addEventListener('click', () => { this.openNav() });
         this.closeButton.addEventListener('click', () => { this.closeNav() });

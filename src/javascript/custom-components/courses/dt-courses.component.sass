@@ -9,10 +9,7 @@
     color: variables.$black
 
 :host
-    // display: block
-    // max-height: 100vh
     overflow-y: auto
-    // scrollbar-width: none
 
 .back-to-top
     &-btn
@@ -46,16 +43,10 @@
         padding: 50px 0
 
         @media (min-width: variables.$breakpoint-sm-md)
-            padding: 50px 55px
-
-        @media (min-width: variables.$breakpoint-md)
             padding: 50px 30px
 
         @media (min-width: variables.$breakpoint-lg)
             padding: 100px
-
-        @media (min-width: variables.$breakpoint-xl)
-            padding: 100px 15%
 
     &-title
         text-align: center
@@ -68,168 +59,223 @@
 
 .section
 
+    &-group
+        width: 95%
+        margin: 0 auto
+
+        @media (min-width: variables.$breakpoint-sm-md)
+            width: 100%
+            margin: 0
+
     &-container
-        margin: 75px 0
         scroll-margin-top: 150px
 
     &-title
-        max-width: 100%
-        height: 60px
-        padding: 10px 15px
-        margin: 0 15px 30px 15px
-        color: white
-        background-color: variables.$blue
-        border-radius: 20px
-        text-align: center
         display: flex
         justify-content: center
         align-items: center
+        height: 60px
+        padding: 10px 15px
+        background-color: variables.$blue
+        border-radius: 20px
+        color: white
         font-weight: 200
         font-size: 24px
 
         @media (min-width: variables.$breakpoint-sm)
             font-size: 26px
-        @media (min-width: variables.$breakpoint-sm-md)
-            margin: 0 0 30px 0
+
         @media (min-width: variables.$breakpoint-lg)
             font-size: 33px
 
-    &-content
-        font-family: 'din'
-        letter-spacing: 1px
-        word-spacing: 2px
-        line-height: 30px
-
-    &-text
+    &-description
+        display: flex
+        justify-content: center
+        align-items: center
         margin: 25px 0
         padding: 0 20px
         text-align: center
         font-size: 24px
+        font-family: 'din'
+        letter-spacing: 1px
+        word-spacing: 2px
+
+    &-content
+        margin: 50px 0
+        font-family: 'din'
+        letter-spacing: 1px
+        word-spacing: 2px
+
+.slider-title
+    font-family: din
+    text-align: center
+    display: flex
+    align-items: center
+    justify-content: center
+    width: 100%
+    padding: 15px
+    font-size: 22px
+    background-color: variables.$medium-blue
+    color: white
+
+.slider
+    display: grid
+    grid-auto-flow: column
+    grid-auto-columns: 100%
+    overflow-x: auto
+    scrollbar-width: none
+
+    &-container
+        display: grid
+        min-height: 300px
+        border-radius: 20px
+        overflow: hidden
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.25)
+
+    &-card
+        padding: 50px 15px
+        background-color: variables.$dark-blue
+
+        @media (min-width: variables.$breakpoint-sm-md)
+            padding: 50px
+
+        &-title
+            position: relative
+            color: white
+            font-size: 24px
+            font-family: gearedSlab
+            text-align: center
+            margin-bottom: 25px
+
+            @media (min-width: variables.$breakpoint-sm)
+                font-size: 26px
+
+            @media (min-width: variables.$breakpoint-lg)
+                font-size: 33px
+
+            &::after
+                content: ''
+                position: absolute
+                left: 50%
+                bottom: -5px
+                transform: translateX(-50%)
+                width: 30%
+                height: 2px
+                background: currentColor
+
+        &-text
+            text-align: center
+            color: white
+
+.professor-slider
+    &-indicators
+        display: grid
+        grid-template-columns: repeat(3, 1fr)
+
+    &-indicator
+        position: relative
+        overflow: hidden
+        z-index: 1
         display: flex
         justify-content: center
         align-items: center
+        padding: 15px
+        border: none
+        background-color: variables.$light-blue
+        font-family: din
+        color: white
+        font-size: 16px
+
+        &::before
+            content: ''
+            position: absolute
+            z-index: -1
+            top: 0
+            left: 0
+            width: 0%
+            height: 100%
+            background-color: variables.$lighter-blue
+            transition: width 0.3s ease
+
+        &:hover
+            cursor: pointer
+            &::before
+                width: 100%
+
+        &:not(:last-of-type)
+            border-right: 1px solid white
+
+.vocal-slider
+    &-indicators
+        display: grid
+        grid-template-columns: repeat(7, 1fr)
+
+    &-indicator
+        position: relative
+        overflow: hidden
+        z-index: 1
+        display: flex
+        justify-content: center
+        align-items: center
+        padding: 15px
+        border: none
+        background-color: variables.$light-blue
+        font-family: din
+        color: white
+        font-size: 16px
+
+        &::before
+            content: ''
+            position: absolute
+            z-index: -1
+            top: 0
+            left: 0
+            width: 0%
+            height: 100%
+            background-color: variables.$lighter-blue
+            transition: width 0.3s ease
+
+        &:hover
+            cursor: pointer
+            &::before
+                width: 100%
+
+        &:not(:last-of-type)
+            border-right: 1px solid white
+
+.indicating
+    background-color: variables.$lighter-blue
+
+.extra-descriptions-container
+    display: grid
+    grid-template-rows: repeat(6, 1fr)
+    overflow: hidden
+    background-color: variables.$light-blue
+    border-radius: 20px
+    margin-top: 50px
+
+    @media (min-width: variables.$breakpoint-md)
+        grid-template-rows: repeat(3, 1fr)
+        grid-template-columns: repeat(2, 1fr)
+
+.extra-description
+    display: flex
+    justify-content: center
+    align-items: center
+    text-align: center
+    color: white
+    padding: 15px
+
+    @media (min-width: variables.$breakpoint-md)
+        &:nth-of-type(2)
+            grid-column: 2
+            grid-row: 2
 
     &-image
         width: 100%
         height: 100%
         object-fit: cover
-        aspect-ratio: 16 / 8
-
-        @media (min-width: variables.$breakpoint-md-lg)
-            aspect-ratio: auto
 
         &-container
-            display: flex
             width: 100%
             height: 100%
-
-ul
-    padding: 0 15px
-
-    @media (min-width: variables.$breakpoint-sm-md)
-        padding: 0
-
-.li
-    list-style: none
-    margin-bottom: 30px
-    display: flex
-    flex-direction: column
-    align-items: center
-    border-radius: 20px
-    background-color: white
-    width: 100%
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.25)
-
-    &-title
-        font-family: din
-        text-align: center
-        display: flex
-        align-items: center
-        justify-content: center
-        width: 100%
-        border-radius: 20px 20px 0 0
-        padding: 10px 15px
-        font-size: 22px
-        background-color: variables.$lighter-blue
-        color: white
-
-    &-text
-        font-family: din
-        font-size: 22px
-
-        &-container
-            position: relative
-            text-align: center
-            display: flex
-            justify-content: center
-            align-items: center
-            width: 100%
-            height: 100%
-            padding: 20px
-            min-height: 150px
-
-.grid
-
-    &-professor,
-    &-module
-        display: grid
-        grid-auto-rows: 1fr
-
-    &-professor
-        @media (min-width: variables.$breakpoint-md)
-            grid-template-rows: 1fr 1.5fr 1fr
-            grid-template-columns: repeat(2, 1fr)
-            column-gap: 20px
-
-    &-module
-        @media (min-width: variables.$breakpoint-md)
-            grid-template-rows: repeat(4, 1fr)
-            grid-template-columns: repeat(2, 1fr)
-            column-gap: 20px
-
-    &-section
-        background-color: variables.$light-blue
-        display: grid
-        grid-template-rows: repeat(3, 1fr 2fr)
-        overflow: hidden
-
-        @media (min-width: variables.$breakpoint-sm-md)
-            border-radius: 20px
-
-        @media (min-width: variables.$breakpoint-md-lg)
-            margin-top: 25px
-            grid-template-rows: none
-            grid-template-columns: repeat(2, 1fr)
-
-.first-column
-    @media (min-width: variables.$breakpoint-md-lg)
-        grid-row: 2
-
-.span2
-    @media (min-width: variables.$breakpoint-md)
-        grid-column: span 2
-
-.centered
-    @media (min-width: variables.$breakpoint-md)
-        grid-column: 1 / -1
-        justify-self: center
-        width: 60%
-
-a
-    color: variables.$blue
-    transition: color 0.2s ease, text-decoration 0.2s ease
-
-    &:hover
-        color: variables.$lighter-blue
-        text-decoration: underline
-
-.hover-scale
-    transition: transform 0.2s ease-out, box-shadow 0.3s ease-in-out
-    &:hover
-        cursor: pointer
-        transform: scale(1.02) translateY(-3px)
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3), 0 4px 8px rgba(0, 0, 0, 0.4)
-        animation: pulse 0.4s ease-in-out
-
-.white
-    color: white
