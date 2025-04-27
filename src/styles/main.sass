@@ -15,8 +15,6 @@
 html,
 body
     min-height: 100%
-    scrollbar-width: thin
-    scrollbar-color: variables.$blue transparent
 
 body
     font-family: "gearedSlab", 'Roboto', sans-serif
@@ -24,11 +22,16 @@ body
     background-color: variables.$very-light-grey
 
 main
-    margin-top: 100.45px
+    width: 95%
+    max-width: 1000px
+    margin: 0 auto
 
 header
-    position: fixed
+    position: sticky
     top: 0
     left: 0
-    width: 100%
     z-index: 9999
+    margin-bottom: 50px
+
+    @media (min-width: variables.$breakpoint-lg)
+        margin-bottom: 75px

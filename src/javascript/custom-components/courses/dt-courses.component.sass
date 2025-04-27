@@ -6,7 +6,7 @@
     box-sizing: border-box
     text-decoration: none
     font-size: 22px
-    color: variables.$black
+    color: variables.$dark-blue
 
 :host
     overflow-y: auto
@@ -14,6 +14,7 @@
 .back-to-top
     &-btn
         position: fixed
+        z-index: 999
         bottom: 0
         right: 0
         width: 60px
@@ -23,12 +24,12 @@
         display: flex
         justify-content: flex-end
         align-items: flex-end
-        background-color: variables.$blue
+        background-color: variables.$dark-blue
         border: none
         cursor: pointer
         transition: background-color 0.2s ease-out
         &:hover
-            background-color: variables.$light-blue
+            background-color: variables.$medium-blue
             .back-to-top-icon
                 transform: scale(1.1)
 
@@ -40,53 +41,29 @@
 .main
     &-container
         scroll-margin-top: 100px
-        padding: 50px 0
-
-        @media (min-width: variables.$breakpoint-sm-md)
-            padding: 50px 30px
-
-        @media (min-width: variables.$breakpoint-lg)
-            padding: 100px
 
     &-title
-        text-align: center
-        margin-bottom: 30px
+        padding: 10px 0
         font-size: 50px
-        color: variables.$blue
+        text-align: center
+        color: white
+        background-color: variables.$blue
+        background: linear-gradient(to right, variables.$blue, variables.$light-blue)
+        border-radius: 0 20px 0 20px
 
         @media (min-width: variables.$breakpoint-lg)
             font-size: 60px
 
 .section
-
-    &-group
-        width: 95%
-        margin: 0 auto
-
-        @media (min-width: variables.$breakpoint-sm-md)
-            width: 100%
-            margin: 0
-
     &-container
         scroll-margin-top: 150px
+        margin: 50px 0
 
     &-title
-        display: flex
-        justify-content: center
-        align-items: center
-        height: 60px
-        padding: 10px 15px
-        background-color: variables.$blue
-        border-radius: 20px
-        color: white
+        color: variables.$dark-blue
+        text-align: center
         font-weight: 200
-        font-size: 24px
-
-        @media (min-width: variables.$breakpoint-sm)
-            font-size: 26px
-
-        @media (min-width: variables.$breakpoint-lg)
-            font-size: 33px
+        font-size: 36px
 
     &-description
         display: flex
@@ -106,24 +83,25 @@
         letter-spacing: 1px
         word-spacing: 2px
 
-.slider-title
-    font-family: din
-    text-align: center
-    display: flex
-    align-items: center
-    justify-content: center
-    width: 100%
-    padding: 15px
-    font-size: 22px
-    background-color: variables.$medium-blue
-    color: white
-
 .slider
     display: grid
     grid-auto-flow: column
     grid-auto-columns: 100%
     overflow-x: auto
     scrollbar-width: none
+
+    &-title
+        text-align: center
+        display: flex
+        align-items: center
+        justify-content: center
+        width: 100%
+        padding: 15px
+        font-size: 32px
+        font-family: gearedSlab
+        font-weight: 100
+        background-color: variables.$medium-blue
+        color: white
 
     &-container
         display: grid
@@ -134,18 +112,19 @@
 
     &-card
         padding: 50px 15px
-        background-color: variables.$dark-blue
+        display: flex
+        flex-direction: column
+        justify-content: center
+        gap: 25px
 
         @media (min-width: variables.$breakpoint-sm-md)
             padding: 50px
 
         &-title
             position: relative
-            color: white
             font-size: 24px
             font-family: gearedSlab
             text-align: center
-            margin-bottom: 25px
 
             @media (min-width: variables.$breakpoint-sm)
                 font-size: 26px
@@ -153,19 +132,9 @@
             @media (min-width: variables.$breakpoint-lg)
                 font-size: 33px
 
-            &::after
-                content: ''
-                position: absolute
-                left: 50%
-                bottom: -5px
-                transform: translateX(-50%)
-                width: 30%
-                height: 2px
-                background: currentColor
-
         &-text
             text-align: center
-            color: white
+            font-size: 24px
 
 .professor-slider
     &-indicators
@@ -181,7 +150,7 @@
         align-items: center
         padding: 15px
         border: none
-        background-color: variables.$light-blue
+        background-color: variables.$medium-blue
         font-family: din
         color: white
         font-size: 16px
@@ -194,7 +163,7 @@
             left: 0
             width: 0%
             height: 100%
-            background-color: variables.$lighter-blue
+            background-color: variables.$light-blue
             transition: width 0.3s ease
 
         &:hover
@@ -219,10 +188,10 @@
         align-items: center
         padding: 15px
         border: none
-        background-color: variables.$light-blue
+        background-color: variables.$medium-blue
         font-family: din
         color: white
-        font-size: 16px
+        font-size: 18px
 
         &::before
             content: ''
@@ -232,7 +201,7 @@
             left: 0
             width: 0%
             height: 100%
-            background-color: variables.$lighter-blue
+            background-color: variables.$light-blue
             transition: width 0.3s ease
 
         &:hover
@@ -244,7 +213,7 @@
             border-right: 1px solid white
 
 .indicating
-    background-color: variables.$lighter-blue
+    background-color: variables.$light-blue
 
 .extra-descriptions-container
     display: grid
