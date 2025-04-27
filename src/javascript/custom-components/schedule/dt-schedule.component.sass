@@ -6,84 +6,59 @@
     box-sizing: border-box
     text-decoration: none
     font-family: 'din'
+    list-style: none
 
-.separator
-    margin: 0 7.5px
-
-    @media (min-width: variables.$breakpoint-sm)
-        margin: 0 15px
-
-.day
-    position: absolute
-    left: -1px
-    top: -1px
-    z-index: 1
-    display: flex
-    align-items: center
-    justify-content: center
-    height: calc(100% + 2px)
-    width: 30%
-    border-radius: 45px
-    background-color: variables.$blue
-    color: white
-
-.hours
-    position: absolute
-    right: 0
-    height: 100%
-    display: flex
-    align-items: center
-    justify-content: flex-end
-    padding-right: 15px
-    width: 100%
-    border-radius: 45px
-    background-color: variables.$light-blue
-    color: white
-    outline: 1px solid variables.$blue
-
-    @media (min-width: variables.$breakpoint-sm)
-        padding-right: 15%
-
-.card
-    display: flex
-    flex-direction: column
-    align-items: center
-    justify-content: center
-    padding: 50px 5px 0 5px
-    font-size: 22px
-
-    @media (min-width: variables.$breakpoint-sm)
-        padding: 50px 15px 0 15px
-        font-size: 24px
-
-    @media (min-width: variables.$breakpoint-lg)
-        padding: 100px 0 0 0
-
+.schedule
     &-title
-        font-family: 'gearedSlab'
-        color: variables.$blue
-        font-size: 36px
-        margin-bottom: 30px
+        font-family: gearedSlab
+        font-size: 50px
         text-align: center
+        color: white
+        padding: 10px 0
+        border-radius: 0 20px 0 20px
+        background: linear-gradient(to right, variables.$blue, variables.$light-blue)
 
         @media (min-width: variables.$breakpoint-lg)
-            font-size: 46px
+            font-size: 60px
 
-    &-body
-        width: 100%
-
-        @media (min-width: variables.$breakpoint-sm)
-            width: 450px
+    &-list
+        display: grid
+        row-gap: 5px
+        max-width: 456px
+        margin: 50px auto 0 auto
+        color: variables.$dark-blue
+        border-radius: 10px
+        overflow: hidden
 
     &-item
-        position: relative
-        display: flex
-        justify-content: space-between
-        width: 100%
-        height: 50px
-        border-radius: 45px
-        margin-bottom: 10px
-        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.25)
+        display: grid
+        grid-template-columns: 1fr 3fr
+        color: white
 
-.closed
-    padding-right: 30%
+        @media (min-width: variables.$breakpoint-sm)
+            grid-template-columns: repeat(2, 1fr)
+
+    &-day
+        display: flex
+        align-items: center
+        padding: 15px 5px
+        background: linear-gradient(to left, variables.$blue, variables.$light-blue)
+
+        @media (min-width: variables.$breakpoint-sm-md)
+            padding: 20px
+
+        &.long
+            display: none
+            @media (min-width: variables.$breakpoint-sm)
+                display: flex
+
+        &.short
+            @media (min-width: variables.$breakpoint-sm)
+                display: none
+
+    &-hours
+        display: flex
+        align-items: center
+        justify-content: flex-end
+        padding: 15px 5px
+        background: linear-gradient(to right, variables.$blue, variables.$light-blue)

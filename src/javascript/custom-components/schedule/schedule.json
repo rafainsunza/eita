@@ -1,0 +1,40 @@
+{
+  "title": "Horários",
+  "days": {
+    "day_1": {
+      "name": "segunda",
+      "short_name": "seg",
+      "hours": "08:00 - 12:00 e 14:30 - 19:00"
+    },
+    "day_2": {
+      "name": "terça",
+      "short_name": "ter",
+      "hours": "08:00 - 12:00 e 14:30 - 19:00"
+    },
+    "day_3": {
+      "name": "quarta",
+      "short_name": "qua",
+      "hours": "08:00 - 12:00 e 14:30 - 19:00"
+    },
+    "day_4": {
+      "name": "quinta",
+      "short_name": "qui",
+      "hours": "08:00 - 12:00 e 14:30 - 19:00"
+    },
+    "day_5": {
+      "name": "sexta",
+      "short_name": "sex",
+      "hours": "08:00 - 12:00 e 14:30 - 17:00"
+    },
+    "day_6": {
+      "name": "sábado",
+      "short_name": "sáb",
+      "hours": "fechado"
+    },
+    "day_7": {
+      "name": "domingo",
+      "short_name": "dom",
+      "hours": "fechado"
+    }
+  }
+}

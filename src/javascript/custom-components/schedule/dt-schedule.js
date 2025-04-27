@@ -1,7 +1,6 @@
 import html from './dt-schedule.html';
 import style from './dt-schedule.component.sass';
-
-import { fetchImage } from '../../utils';
+import scheduleData from './schedule.json'
 
 const template = document.createElement('template');
 
@@ -17,6 +16,29 @@ class DtSchedule extends HTMLElement {
         super();
         this.attachShadow({ mode: 'open' });
         this.shadowRoot.appendChild(template.content.cloneNode(true));
+
+        const scheduleWrapper = this.shadowRoot.querySelector('.schedule-wrapper');
+
+        const scheduleContainer = document.createElement('div');
+        scheduleContainer.classList.add('schedule-container');
+
+        const scheduleContent =
+            `
+                <h2 class="schedule-title">${scheduleData.title}</h2>
+
+                <ul class="schedule-list">
+                    ${Object.values(scheduleData.days).map(day => `
+                        <li class="schedule-item">
+                            <p class="schedule-day short">${day.short_name.toUpperCase()}</p>
+                            <p class="schedule-day long">${day.name.toUpperCase()}</p>
+                            <p class="schedule-hours">${day.hours.toUpperCase()}</p>
+                        </li>
+                        `).join('')}
+                </ul>
+            `;
+
+        scheduleContainer.innerHTML = scheduleContent;
+        scheduleWrapper.appendChild(scheduleContainer);
 
     }
 
