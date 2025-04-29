@@ -148,7 +148,7 @@ class DtAbout extends HTMLElement {
 
                                         <p class="professor-card-description">${card.description}</p>
 
-                                        <button class="professor-card-button">${card.button}</button>
+                                        <button class="professor-card-button">${card.button.toUpperCase()}</button>
                                   </div>
                               `).join('')}
                       </div>

@@ -6,16 +6,11 @@
     box-sizing: border-box
     text-decoration: none
     font-family: din
-    color: variables.$black
-
-.alt-font
-    font-family: 'Roboto', Calibri, 'Trebuchet MS', sans-serif
-    font-size: 16px
-    display: flex
-    align-items: center
+    font-size: 22px
+    color: variables.$dark-blue
+    list-style: none
 
 .submit-button
-    font-size: 22px
     color: white
     background-color: variables.$blue
     width: 200px
@@ -45,71 +40,105 @@
         &::after
             left: 0
 
+.alt-font
+    font-family: 'Roboto', Calibri, 'Trebuchet MS', sans-serif
+    font-size: 16px
+    display: flex
+    align-items: center
+    transition: color 0.2s ease, fill 0.2s ease
+.email-container
+    display: flex
+    transition: color 0.2s ease, fill 0.2s ease
+
+iframe
+    display: none
+    @media (min-width: variables.$breakpoint-md)
+        display: block
+        width: 100%
+        max-width: 400px
+        height: 245px
+        border-radius: 10px
+
 .contact
-    &-icon
-        width: 20px
-        height: 25px
-
-    &-card
-        display: flex
-        flex-direction: column
-        padding: 50px 15px
-
-        @media (min-width: variables.$breakpoint-md)
-            padding: 50px 30px
-            flex-direction: row
-            justify-content: space-between
+    &-title
+        padding: 10px 0
+        font-family: gearedSlab
+        font-size: 50px
+        text-align: center
+        color: white
+        background-color: variables.$blue
+        background: linear-gradient(to right, variables.$blue, variables.$light-blue)
+        border-radius: 0 20px 0 20px
 
         @media (min-width: variables.$breakpoint-lg)
-            padding: 100px
+            font-size: 60px
+        @media (min-width: variables.$breakpoint-lg)
+            font-size: 60px
 
-        @media (min-width: variables.$breakpoint-xl)
-            padding: 100px 15%
+    &-description
+        display: flex
+        justify-content: center
+        color: variables.$dark-blue
+        font-weight: bolder
+        margin-top: 25px
 
-        &-info
+    &-card
+        &-container
+            display: grid
+            margin-top: 25px
+
             @media (min-width: variables.$breakpoint-md)
-                width: 45%
+                grid-template-columns: repeat(2, 1fr)
+                column-gap: 50px
+                outline: 1px solid variables.$light-grey
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1)
+                border-radius: 10px
+                padding: 10px 20px
 
-            @media (min-width: variables.$breakpoint-md-lg)
-                width: 40%
+        &-list
+            display: grid
+            row-gap: 10px
 
-        &-message
-            margin-bottom: 25px
-        &-title
-            font-family: gearedSlab
-            margin-bottom: 15px
-            color: variables.$blue
-
-            @media (min-width: variables.$breakpoint-lg)
-                font-size: 46px
-        &-text
-            margin-bottom: 15px
-
-        &-option
-            padding: 10px 0
-            display: flex
-
-            & a
-                transition: color 0.2s ease
+            &-item:nth-child(3)
+                & .contact-card-link
+                    align-items: start
+            &-item:last-child
                 display: flex
-                &:hover,
-                &:hover span
-                    color: variables.$blue
+                justify-content: center
 
-            & svg
-                align-self: flex-start
-                margin-right: 15px
-                fill: variables.$blue
+        &-link
+            display: inline-grid
+            grid-template-columns: auto 1fr
+            column-gap: 15px
+            margin-bottom: 10px
+            transition: color 0.2s ease, fill 0.2s ease
+            align-items: center
+            @media (min-width: variables.$breakpoint-md)
+                max-width: 320px
+
+            &:hover,
+            &:hover *
+                cursor: pointer
+                color: variables.$light-blue
+                fill: variables.$light-blue
+
+        &-icon
+            height: 25px
+            width: 20px
+            fill: variables.$blue
 
         &-form
-            display: flex
-            flex-direction: column
+            display: grid
+
+            &-container
+                margin: 25px 0
+                @media (min-width: variables.$breakpoint-md)
+                    margin: 0
 
             & label
                 font-size: 20px
 
             & input
-                font-size: 20px
                 padding: 7.5px 15px
                 margin: 10px 0 15px 0
                 border: none
@@ -123,25 +152,15 @@
                     transform: scale(1.02)
 
             & textarea
-                max-width: 100%
                 height: 100px
-                max-height: 100px
                 padding: 7.5px 15px
                 border: none
                 border-radius: 2.5px
                 outline: 1px solid variables.$light-grey
                 margin: 10px 0 15px 0
-                font-size: 20px
                 transition: transform 0.2s
 
                 &:focus
-                    outline: 2px solid variables.$blue
+                    outline: 2px solid variables.$light-blue
                     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1)
                     transform: scale(1.02)
-
-            &-container
-                margin-top: 25px
-
-                @media (min-width: variables.$breakpoint-md)
-                    width: 45%
-                    margin: 0

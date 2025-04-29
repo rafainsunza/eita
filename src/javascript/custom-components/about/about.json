@@ -101,22 +101,26 @@
       "card_1": {
         "name": "Geórgia Dias",
         "position": "Diretora",
-        "description": "Formada como professora da Técnica Alexander em 2004 na ATON (Alexander Techniek Opleiding Nederland), em Amsterdã, Holanda. Fundou a EITA – Escola Internacional da Técnica Alexander, em Fortaleza, no ano de 2022."
+        "description": "Formada como professora da Técnica Alexander em 2004 na ATON (Alexander Techniek Opleiding Nederland), em Amsterdã, Holanda. Fundou a EITA – Escola Internacional da Técnica Alexander, em Fortaleza, no ano de 2022.",
+        "button": "veja meu cv"
       },
       "card_2": {
         "name": "Reinaldo Renzo",
         "position": "Co-diretor",
-        "description": "Formado em 1995 no Alexander Training Centre, em Brighton, Inglaterra. Fundador da EBTA – Escola Brasileira da Técnica Alexander, a primeira escola de formação de professores da técnica no Brasil."
+        "description": "Formado em 1995 no Alexander Training Centre, em Brighton, Inglaterra. Fundador da EBTA – Escola Brasileira da Técnica Alexander, a primeira escola de formação de professores da técnica no Brasil.",
+        "button": "veja meu cv"
       },
       "card_3": {
         "name": "Merran Poplar",
         "position": "Moderadora",
-        "description": "Professora da Técnica Alexander desde 1994, com formação em escolas renomadas na Inglaterra, Holanda e EUA. É moderadora na EITA e co-diretora da ESTAR, no Rio de Janeiro."
+        "description": "Professora da Técnica Alexander desde 1994, com formação em escolas renomadas na Inglaterra, Holanda e EUA. É moderadora na EITA e co-diretora da ESTAR, no Rio de Janeiro.",
+        "button": "veja meu cv"
       },
       "card_4": {
         "name": "Thomas Gerretsen",
         "position": "Professor Assistente",
-        "description": "Primeiro professor formado pela EITA, graduado em 2025. Atualmente, atua como professor assistente na escola."
+        "description": "Primeiro professor formado pela EITA, graduado em 2025. Atualmente, atua como professor assistente na escola.",
+        "button": "veja meu cv"
       }
     }
   }
