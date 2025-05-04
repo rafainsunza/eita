@@ -24,7 +24,7 @@ class DtSchedule extends HTMLElement {
 
         const scheduleContent =
             `
-                <h2 class="schedule-title">${scheduleData.title}</h2>
+                <dt-page-title title="${scheduleData.title}" subtitle=""></dt-page-title>
 
                 <ul class="schedule-list">
                     ${Object.values(scheduleData.days).map(day => `

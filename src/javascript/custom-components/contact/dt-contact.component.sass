@@ -55,45 +55,27 @@ iframe
     @media (min-width: variables.$breakpoint-md)
         display: block
         width: 100%
-        max-width: 400px
+        max-width: 500px
         height: 245px
         border-radius: 10px
 
 .contact
-    &-title
-        padding: 10px 0
-        font-family: gearedSlab
-        font-size: 50px
-        text-align: center
-        color: white
-        background-color: variables.$blue
-        background: linear-gradient(to right, variables.$blue, variables.$light-blue)
-        border-radius: 0 20px 0 20px
-
-        @media (min-width: variables.$breakpoint-lg)
-            font-size: 60px
-        @media (min-width: variables.$breakpoint-lg)
-            font-size: 60px
-
     &-description
-        display: flex
-        justify-content: center
         color: variables.$dark-blue
         font-weight: bolder
-        margin-top: 25px
+        padding-bottom: 25px
+        grid-column: 1 / -1
 
     &-card
         &-container
             display: grid
-            margin-top: 25px
+            max-width: variables.$breakpoint-lg
+            margin: 0 auto
+            padding: 20px 20px 0 20px
 
             @media (min-width: variables.$breakpoint-md)
                 grid-template-columns: repeat(2, 1fr)
                 column-gap: 50px
-                outline: 1px solid variables.$light-grey
-                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1)
-                border-radius: 10px
-                padding: 10px 20px
 
         &-list
             display: grid
@@ -102,9 +84,6 @@ iframe
             &-item:nth-child(3)
                 & .contact-card-link
                     align-items: start
-            &-item:last-child
-                display: flex
-                justify-content: center
 
         &-link
             display: inline-grid
@@ -114,7 +93,7 @@ iframe
             transition: color 0.2s ease, fill 0.2s ease
             align-items: center
             @media (min-width: variables.$breakpoint-md)
-                max-width: 320px
+                max-width: 400px
 
             &:hover,
             &:hover *

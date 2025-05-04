@@ -22,6 +22,12 @@ class DtAbout extends HTMLElement {
         const sectionGroup = this.shadowRoot.querySelector('.section-group');
         this.backToTopBtn = this.shadowRoot.querySelector('.back-to-top-btn');
 
+        // Append title
+        const pageTitle = document.createElement('dt-page-title');
+        pageTitle.setAttribute('title', 'Sobre');
+        pageTitle.setAttribute('subtitle', '');
+        sectionGroup.appendChild(pageTitle);
+
         // Dynamically create intro html and append to document
         const sectionContainerIntro = document.createElement('div');
         sectionContainerIntro.classList.add('section-container', 'intro');
@@ -96,7 +102,7 @@ class DtAbout extends HTMLElement {
 
                     <div class="card-container">
                         ${Object.values(aboutData.cons.cards).map(card => `
-                                <div class="card">
+                                <div class="card span-full-column-width">
                                     <p class="card-title">${card.title}</p>
                                     <p class="card-description">${card.description}</p>
                                 </div>

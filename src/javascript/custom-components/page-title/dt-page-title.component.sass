@@ -1,0 +1,45 @@
+@use '../../../styles/_variables'
+
+*
+    padding: 0
+    margin: 0
+    box-sizing: border-box
+    text-decoration: none
+    font-family: gearedSlab
+    font-size: 22px
+    color: white
+
+.title-container
+    display: flex
+    flex-direction: column
+    justify-content: center
+    // min-height: 300px
+    padding: 20px
+    background: linear-gradient(to right, variables.$blue, variables.$light-blue)
+
+.title
+    text-align: center
+    font-size: 100px
+
+.subtitle
+    display: grid
+    justify-content: center
+    align-items: center
+    text-align: center
+
+    @media (min-width: variables.$breakpoint-md)
+        grid-template-columns: repeat(3, auto)
+        grid-template-rows: 70px
+
+    &-span
+        align-content: center
+        padding: 5px 15px
+        font-size: 24px
+
+        &:nth-child(2)
+            @media (min-width: variables.$breakpoint-md)
+                border-left: 1px solid white
+                border-right: 1px solid white
+
+.hidden
+    display: none

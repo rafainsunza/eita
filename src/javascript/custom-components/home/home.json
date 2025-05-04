@@ -1,0 +1,22 @@
+{
+  "title": "EITA",
+  "subtitle": "<span class='subtitle-span'>Movimento fluido</span> <span class='subtitle-span'>Corpo e mente em harmonia</span> <span class='subtitle-span'>Vida transformada</span>",
+  "cards": {
+    "card_1": {
+      "title": "Quem Somos",
+      "text": "Situada em Fortaleza, a Escola Internacional da Técnica Alexander (EITA), fundada em março de 2022, é aprovada pela Associação Brasileira da Técnica Alexander (ABTA). As escolas certificadas pela ABTA seguem as normas da ATAS | Alexander Technique Affiliated Societies, garantindo que os padrões de formação estabelecidos por F.M. Alexander sejam rigorosamente mantidos."
+    },
+    "card_2": {
+      "title": "Formação Completa",
+      "text": "A EITA oferece um treinamento completo para a formação de professores da Técnica Alexander, proporcionando uma experiência de aprendizado aprofundada. Com uma abordagem cuidadosa e respeitosa, a escola assegura que cada aluno desenvolva as habilidades necessárias para aplicar e ensinar a Técnica com excelência."
+    },
+    "card_3": {
+      "title": "Transformação Pessoal",
+      "text": "Além da formação profissional, a EITA também recebe alunos que desejam explorar e desenvolver seu próprio processo de transformação. A Técnica Alexander é uma ferramenta valiosa para aprimorar a consciência corporal, reduzir tensões desnecessárias e promover mais eficiência nos movimentos do dia a dia."
+    },
+    "card_4": {
+      "title": "Nosso Compromisso",
+      "text": "Nosso compromisso é proporcionar um ambiente de crescimento e descoberta, ajudando cada aluno a conquistar mais liberdade, equilíbrio e bem-estar por meio da prática contínua e da autopercepção refinada."
+    }
+  }
+}

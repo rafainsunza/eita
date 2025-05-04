@@ -1,0 +1,11 @@
+{
+  "title": "Aulas",
+  "individual": {
+    "title": "Individuais",
+    "text": "As aulas da Técnica Alexander começam de forma individual, permitindo uma atenção totalmente personalizada para atender às necessidades específicas de cada aluno(a). <br> Também oferecemos aulas em pequenos grupos, ideais para quem já possui uma base sólida e deseja aprofundar seu aprendizado. <br> Para participar desses grupos, é necessário ter completado pelo menos 15 horas de aulas individuais, garantindo que o(a) aluno(a) tenha a autonomia necessária para aplicar a Técnica Alexander no seu cotidiano."
+  },
+  "group": {
+    "title": "Em Grupo",
+    "text": "Quem já completou no mínimo 15 horas de aulas individuais pode optar por participar dos grupos. Essa exigência garante que o aluno(a) tenha uma base sólida para aproveitar ao máximo o aprendizado coletivo. <br> Cada grupo é formado por no máximo 5 alunos por professor, o que garante uma atenção personalizada a cada participante. <br> Esse formato assegura que todos recebam a atenção necessária para aplicar a Técnica de forma mais independente, além de criar um ambiente colaborativo de aprendizado."
+  }
+}

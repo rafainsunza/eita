@@ -11,26 +11,16 @@
     list-style: none
 
 .schedule
-    &-title
-        font-family: gearedSlab
-        font-size: 50px
-        text-align: center
-        color: white
-        padding: 10px 0
-        border-radius: 0 20px 0 20px
-        background: linear-gradient(to right, variables.$blue, variables.$light-blue)
-
-        @media (min-width: variables.$breakpoint-lg)
-            font-size: 60px
-
     &-list
         display: grid
         margin: 50px auto 0 auto
-        max-width: 700px
-        outline: 1px solid rgba(0, 0, 0, 0.1)
-        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px
-        border-radius: 10px
-        overflow: hidden
+        max-width: variables.$breakpoint-lg
+
+        @media (min-width: variables.$breakpoint-lg)
+            outline: 1px solid rgba(0, 0, 0, 0.1)
+            box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px
+            border-radius: 10px
+            overflow: hidden
 
     &-item
         display: grid
@@ -38,14 +28,18 @@
         height: 60px
         border-bottom: 1px solid rgba(0, 0, 0, 0.1)
 
+        &:last-child
+            border-bottom: 0
+
     &-day
         display: flex
         align-items: center
         padding: 0 15px
         font-family: gearedSlab
         color: white
-        background: linear-gradient(to right, variables.$blue, variables.$light-blue)
+        background: variables.$dark-blue
         @media (min-width: variables.$breakpoint-md)
+            justify-content: center
             padding: 0 25px
 
         &.long
@@ -71,4 +65,8 @@
             font-size: 24px
 
         @media (min-width: variables.$breakpoint-md)
+            justify-content: center
             padding: 0 25px
+
+        @media (min-width: variables.$breakpoint-lg)
+            background-color: white

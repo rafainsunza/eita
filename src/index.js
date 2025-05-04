@@ -8,6 +8,7 @@ import './javascript/custom-components/schedule/dt-schedule'
 import './javascript/custom-components/about/dt-about'
 import './javascript/custom-components/lessons/dt-lessons'
 import './javascript/custom-components/courses/dt-courses'
+import './javascript/custom-components/page-title/dt-page-title'
 
 import { fetchImage } from './javascript/utils'
 

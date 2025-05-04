@@ -26,10 +26,11 @@ class DtContact extends HTMLElement {
 
         const contactContent =
             `
-                <h2 class="contact-title">${contactData.title}</h2>
-                <p class="contact-description">${contactData.description}</p>
+                <dt-page-title title="${contactData.title}" subtitle=""></dt-page-title>
 
                 <div class="contact-card-container">
+                    <h3 class="contact-description">${contactData.description}</h3>
+
                     <div class="contact-card-info">
                         <ul class="contact-card-list">
                             ${Object.values(contactData.contact_options).map(option => `

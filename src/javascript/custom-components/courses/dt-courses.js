@@ -22,6 +22,12 @@ class DtCourses extends HTMLElement {
         this.backToTopBtn = this.shadowRoot.querySelector('.back-to-top-btn');
         const sectionGroup = this.shadowRoot.querySelector('.section-group');
 
+        // Append title
+        const pageTitle = document.createElement('dt-page-title');
+        pageTitle.setAttribute('title', 'Cursos');
+        pageTitle.setAttribute('subtitle', '');
+        sectionGroup.appendChild(pageTitle);
+
         // Dynamically create professor section html and append it
         const sectionContainerProfessor = document.createElement('div');
         sectionContainerProfessor.classList.add('section-container', 'professor');
