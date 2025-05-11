@@ -2,7 +2,7 @@ import html from './dt-about.html';
 import style from './dt-about.component.sass';
 import aboutData from "./about.json";
 
-import { fetchImage, scrollToSection } from '../../utils';
+import { fetchImage } from '../../utils';
 
 const template = document.createElement('template');
 
@@ -19,181 +19,173 @@ class DtAbout extends HTMLElement {
         this.attachShadow({ mode: 'open' });
         this.shadowRoot.appendChild(template.content.cloneNode(true));
 
-        const sectionGroup = this.shadowRoot.querySelector('.section-group');
-        this.backToTopBtn = this.shadowRoot.querySelector('.back-to-top-btn');
+        const aboutWrapper = this.shadowRoot.querySelector('.about-wrapper');
+        const aboutContainer = document.createElement('div');
+        aboutContainer.classList.add('about-container');
+        const keyOrder = ['intro', 'for_who', 'for_what', 'cons', 'quantity', 'professors'];
+        const caretIcon = '<svg class="accordion-button-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M9.4 278.6c-12.5-12.5-12.5-32.8 0-45.3l128-128c9.2-9.2 22.9-11.9 34.9-6.9s19.8 16.6 19.8 29.6l0 256c0 12.9-7.8 24.6-19.8 29.6s-25.7 2.2-34.9-6.9l-128-128z"/></svg>';
+        const aboutContent = `
+            <dt-page-title title="Sobre" subtitle=""></dt-page-title>
 
-        // Append title
-        const pageTitle = document.createElement('dt-page-title');
-        pageTitle.setAttribute('title', 'Sobre');
-        pageTitle.setAttribute('subtitle', '');
-        sectionGroup.appendChild(pageTitle);
+            <div class="accordion">
+                ${keyOrder.map((key, index) => {
+            const lastIndex = keyOrder.length - 1;
+            const data = aboutData[key];
 
-        // Dynamically create intro html and append to document
-        const sectionContainerIntro = document.createElement('div');
-        sectionContainerIntro.classList.add('section-container', 'intro');
+            if (index === 0) {
+                return (`
+                        <div class="accordion-item">
+                            <button class="accordion-button">
+                                <span>${data.question || data.title}</span>
+                                ${caretIcon}
+                            </button>
+                            <div class="accordion-content">
+                                <div class="accordion-content-inner intro">
 
-        const introContent = `
-            <h3 class="section-title">${aboutData.intro.title}</h3>
+                                    <figure class="accordion-image-container intro">
+                                        <figcaption>${data.image_caption}</figcaption>
+                                    </figure>
+                                    <p class="accordion-text intro">${data.answer.replace(/\.\s*/g, '.<span class="break"></span>')}</p>
 
-            <div class="intro-article-container">
-                <div class="intro-image-container">
+                                </div>
+                             
+                            </div>
+                        </div>    
+                `);
+            }
 
-                    <figcaption class="intro-image-caption">
-                        ${aboutData.intro.image_caption}
-                    </figcaption>
-                </div>
+            if (index > 0 && index < lastIndex) {
+                return (`
+                    <div class="accordion-item">
+                        <button class="accordion-button">
+                            <span>${data.question || data.title}</span>
+                            ${caretIcon}
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-content-inner">
+                                ${Object.values(data.answers).map(answer => `
+                                <p class="accordion-answer">${answer.answer}</p>
+                                <p class="accordion-answer-detail">${answer.answer_detail}</p>
+                                `).join('')}
+                            </div>
+                        </div>
+                    </div>    
+                `);
+            }
 
-                ${aboutData.intro.paragraphs.map(paragraph => `
-                     <p class="intro-paragraph">${paragraph}</p>
-                    `).join('')}
+            if (index === lastIndex) {
+                return (`
+                    <div class="accordion-item">
+                        <button class="accordion-button">
+                            <span>${data.question || data.title}</span>
+                            ${caretIcon}
+                        </button>
+                        <div class="accordion-content professor">
+                            <div class="accordion-content-inner professor">
+                                ${Object.values(data.cards).map(card => {
+                    return (`
+                                <div class="accordion-professor-card">
+                                    <div class="accordion-professor-card-image-container"></div>
+
+                                    <div class="accordion-professor-card-info">
+                                        <h3 class="accordion-professor-card-name">${card.name}</h3>
+                                        <h4 class="accordion-professor-card-position">${card.position}</h4>
+                                        <p class="accordion-professor-card-description">${card.description}</p>
+                                    </div>
+
+                                    <button class="accordion-professor-card-button">${card.button.toUpperCase()}</button>
+                                </div>
+                            `);
+                }).join('')}
+                            </div>
+                        </div>
+                    </div>    
+                `);
+            }
+        }).join('')}
+            
+
             </div>
-        `;
+    `;
+        aboutContainer.innerHTML = aboutContent;
+        aboutWrapper.appendChild(aboutContainer);
 
-        sectionContainerIntro.innerHTML = introContent;
-        sectionGroup.appendChild(sectionContainerIntro);
-        fetchImage('./assets/images/fm-alexander.jpg', this.shadowRoot.querySelector('.intro-image-container'), 'intro-image')
+        const introImages = ['../../../assets/images/fm-alexander.jpg'];
+        const introImageContainers = Array.from(this.shadowRoot.querySelectorAll('.accordion-image-container.intro'));
+        const professorCardImages = ['../../../assets/images/portrait-georgia.jpg', '../../../assets/images/portrait-reinaldo.jpg', '../../../assets/images/portrait-merran.jpg', '../../../assets/images/portrait-thomas.jpg'];
+        const professorCardImageContainers = Array.from(this.shadowRoot.querySelectorAll('.accordion-professor-card-image-container'));
+        const accordionButtons = Array.from(this.shadowRoot.querySelectorAll('.accordion-button'));
+        const accordionContent = Array.from(this.shadowRoot.querySelectorAll('.accordion-content'));
 
-        // Dynamically create for-who html and append to document
-        const sectionContainerForWho = document.createElement('div');
-        sectionContainerForWho.classList.add('section-container', 'for-who');
+        introImages.map((image, index) => fetchImage(image, introImageContainers[index], 'accordion-image'));
+        professorCardImages.map((image, index) => fetchImage(image, professorCardImageContainers[index], 'accordion-professor-card-image'));
 
-        const forWhoContent = `
-                    <h3 class="section-title">${aboutData.for_who.title}</h3>
+        accordionButtons.map(button => button.addEventListener('click', (e) => this.handleAccordionClick(e, accordionButtons, accordionContent)));
+        window.addEventListener('resize', () => this.handleWindowResize());
+    }
 
-                    <div class="card-container">
-                        ${Object.values(aboutData.for_who.cards).map(card => `
-                                <div class="card">
-                                    <p class="card-title">${card.title}</p>
-                                    <p class="card-description">${card.description}</p>
-                                </div>
-                            `).join('')}
-                    </div>
-        `;
+    disconnectedCallback() {
+        accordionButtons.map(button => button.removeEventListener('click', this.handleAccordionClick));
+        window.removeEventListener('resize', this.handleWindowResize);
+    }
 
-        sectionContainerForWho.innerHTML = forWhoContent;
-        sectionGroup.appendChild(sectionContainerForWho);
+    handleWindowResize() {
+        // reset the maxheight on opened accordion content to avoid content being hidden because of lack of height
+        const openedContentArray = Array.from(this.shadowRoot.querySelectorAll('.accordion-content.open'));
+        let openedContent;
 
-        // Dynamically create for-what html and append to document
-        const sectionContainerForWhat = document.createElement('div');
-        sectionContainerForWhat.classList.add('section-container', 'for-what');
+        openedContentArray.length > 0 ? openedContent = openedContentArray[0] : openedContent = false;
 
-        const forWhatContent = `
-                    <h3 class="section-title">${aboutData.for_what.title}</h3>
+        if (openedContent === false) { return } else {
+            openedContent.offsetHeight;
+            openedContent.style.maxHeight = openedContent.scrollHeight + 'px';
+        }
 
-                    <div class="card-container">
-                        ${Object.values(aboutData.for_what.cards).map(card => `
-                                <div class="card">
-                                    <p class="card-title">${card.title}</p>
-                                    <p class="card-description">${card.description}</p>
-                                </div>
-                            `).join('')}
-                    </div>
-        `;
+    }
 
-        sectionContainerForWhat.innerHTML = forWhatContent;
-        sectionGroup.appendChild(sectionContainerForWhat);
+    handleAccordionClick(e, accordionButtons, accordionContent) {
+        const clickedButton = e.target.closest('button');
+        const contentToDisplay = clickedButton.nextElementSibling;
+        const isOpen = contentToDisplay.classList.contains('open');
+        const remainingButtons = accordionButtons.filter(button => { if (button !== clickedButton) { return button } });
+        const remainingContent = remainingButtons.map(button => { return button.nextElementSibling });
 
-        // Dynamically create cons html and append to document
-        const sectionContainerCons = document.createElement('div');
-        sectionContainerCons.classList.add('section-container', 'cons');
+        if (isOpen) {
+            this.hideAccordionContent(accordionContent, accordionButtons);
+            return
+        }
 
-        const consContent = `
-                    <h3 class="section-title">${aboutData.cons.title}</h3>
+        this.showAccordionContent(contentToDisplay, clickedButton);
+        this.hideAccordionContent(remainingContent, remainingButtons);
 
-                    <div class="card-container">
-                        ${Object.values(aboutData.cons.cards).map(card => `
-                                <div class="card span-full-column-width">
-                                    <p class="card-title">${card.title}</p>
-                                    <p class="card-description">${card.description}</p>
-                                </div>
-                            `).join('')}
-                    </div>
-        `;
+        contentToDisplay.classList.contains('professor') && window.innerWidth < 1024 ? this.scrollToContent(contentToDisplay) : null;
+    }
 
-        sectionContainerCons.innerHTML = consContent;
-        sectionGroup.appendChild(sectionContainerCons);
+    scrollToContent(content) {
+        setTimeout(() => {
+            content.scrollIntoView({
+                behavior: 'smooth',
+                block: 'nearest'
+            });
+        }, 100)
+    }
 
-        // Dynamically create quantity html and append to document
-        const sectionContainerQuantity = document.createElement('div');
-        sectionContainerQuantity.classList.add('section-container', 'lesson-quantity');
+    showAccordionContent(content, button) {
+        content.offsetHeight;
+        content.style.maxHeight = content.scrollHeight + 'px';
 
-        const quantityContent = `
-                     <h3 class="section-title">${aboutData.quantity.title}</h3>
-                     <p class="section-description">${aboutData.quantity.description}</p>
- 
-                     <div class="card-container">
-                         ${Object.values(aboutData.quantity.cards).map(card => `
-                                 <div class="card">
-                                     <p class="card-title">${card.title}</p>
-                                     <p class="card-description">${card.description}</p>
-                                 </div>
-                             `).join('')}
-                     </div>
-         `;
+        content.classList.add('open');
+        button.classList.add('open');
+    }
 
-        sectionContainerQuantity.innerHTML = quantityContent;
-        sectionGroup.appendChild(sectionContainerQuantity);
-
-        // Dynamically create professors html and append to document
-        const sectionContainerProfessors = document.createElement('div');
-        sectionContainerProfessors.classList.add('section-container', 'professors');
-
-        const professorsContent = `
-                      <h3 class="section-title">${aboutData.professors.title}</h3>
-  
-                      <div class="professor-cards-container">
-                          ${Object.values(aboutData.professors.cards).map(card => `
-                                  <div class="professor-card">
-                                        <div class="professor-card-top-container"></div>
-
-                                        <div class="professor-card-avatar-container">
-                                            <div class="professor-card-img-container"></div>
-                                            <h4 class="professor-card-name">${card.name}</h4>
-                                            <h4 class="professor-card-position">${card.position}</h4>
-                                        </div>
-
-                                        <p class="professor-card-description">${card.description}</p>
-
-                                        <button class="professor-card-button">${card.button.toUpperCase()}</button>
-                                  </div>
-                              `).join('')}
-                      </div>
-          `;
-
-        sectionContainerProfessors.innerHTML = professorsContent;
-        sectionGroup.appendChild(sectionContainerProfessors);
-
-        const imgContainers = this.shadowRoot.querySelectorAll('.professor-card-img-container');
-        const portraits = [
-            './assets/images/portrait-georgia.jpg',
-            './assets/images/portrait-reinaldo.jpg',
-            './assets/images/portrait-merran.jpg',
-            './assets/images/portrait-thomas.jpg'
-        ];
-
-        portraits.forEach((portrait, index) => {
-            fetchImage(portrait, imgContainers[index], 'professor-card-img');
+    hideAccordionContent(contents, buttons) {
+        contents.map(content => {
+            content.style.maxHeight = '0px';
+            content.classList.remove('open');
         });
 
-        document.addEventListener('submenu-click', (e) => this.handleScrollClick(e));
-        this.backToTopBtn.addEventListener('click', (e) => this.handleScrollClick(e));
+        buttons.map(button => button.classList.remove('open'));
     }
-
-    handleScrollClick(e) {
-        const navbar = document.querySelector('dt-navbar');
-        const clickedSubmenuIsAbout = e.detail.clickedSubmenu === navbar.shadowRoot.querySelector('.submenu.about')
-        const backToTopClicked = e.target.closest('button') === this.backToTopBtn;
-
-        if (!clickedSubmenuIsAbout && !backToTopClicked) { return }
-
-        navbar.closeNav();
-        scrollToSection(
-            this.shadowRoot.querySelector('.all'),
-            this.shadowRoot.querySelector('.' + e.detail.scrollTargetClass),
-            backToTopClicked
-        );
-    }
-
 }
 customElements.define('dt-about', DtAbout);
 

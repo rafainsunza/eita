@@ -26,15 +26,18 @@ class DtSchedule extends HTMLElement {
             `
                 <dt-page-title title="${scheduleData.title}" subtitle=""></dt-page-title>
 
-                <ul class="schedule-list">
+                <div class="schedule-list-wrapper">
+                    <ul class="schedule-list">
                     ${Object.values(scheduleData.days).map(day => `
                         <li class="schedule-item">
                             <p class="schedule-day short">${day.short_name.toUpperCase()}</p>
                             <p class="schedule-day long">${day.name.toUpperCase()}</p>
-                            <p class="schedule-hours">${day.hours.toUpperCase()}</p>
+                            <p class="schedule-hours">${day.hours}</p>
                         </li>
                         `).join('')}
-                </ul>
+                    </ul>
+                </div>
+             
             `;
 
         scheduleContainer.innerHTML = scheduleContent;

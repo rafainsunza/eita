@@ -42,7 +42,7 @@
         display: grid
         grid-template-rows: auto 1fr
         max-width: variables.$breakpoint-lg
-        margin: 0 auto 50px auto
+        margin: 0 auto
 
         @media (min-width: variables.$breakpoint-lg)
             grid-template-rows: none
@@ -58,7 +58,8 @@
             grid-template-rows: auto 1fr
 
         &-title
-            color: variables.$dark-blue
+            color: white
+            background: linear-gradient(to bottom, variables.$dark-blue, variables.$light-blue)
             text-align: center
             font-weight: 200
             font-size: 36px

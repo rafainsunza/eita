@@ -13,13 +13,17 @@
     display: flex
     flex-direction: column
     justify-content: center
-    // min-height: 300px
     padding: 20px
     background: linear-gradient(to right, variables.$blue, variables.$light-blue)
 
 .title
     text-align: center
     font-size: 100px
+
+    &.home
+        @media (min-width: variables.$breakpoint-md)
+            letter-spacing: 6px
+            font-size: 150px
 
 .subtitle
     display: grid
@@ -29,17 +33,19 @@
 
     @media (min-width: variables.$breakpoint-md)
         grid-template-columns: repeat(3, auto)
-        grid-template-rows: 70px
+        grid-template-rows: 60px
 
     &-span
         align-content: center
         padding: 5px 15px
-        font-size: 24px
+        font-size: 22px
+        height: 100%
 
         &:nth-child(2)
             @media (min-width: variables.$breakpoint-md)
                 border-left: 1px solid white
                 border-right: 1px solid white
+                font-size: 24px
 
 .hidden
     display: none

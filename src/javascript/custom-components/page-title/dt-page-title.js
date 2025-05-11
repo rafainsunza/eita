@@ -41,6 +41,10 @@ class DtPageTitle extends HTMLElement {
 
         titleElement.textContent = title
 
+        if (title === 'EITA') {
+            titleElement.classList.add('home');
+        }
+
         if (subtitle === '') {
             subtitleElement.classList.add('hidden')
         }

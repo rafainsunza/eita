@@ -1,126 +1,119 @@
 {
   "intro": {
-    "title": "O que é a Técnica Alexander?",
-    "paragraphs": [
-      "A Técnica Alexander, desenvolvida por Frederick Matthias Alexander no final do século 19, é um método de reeducação psico-física que promove o aprendizado orgânico da estrutura e do funcionamento natural do corpo humano como um todo.",
-      "Essa abordagem enfatiza a compreensão profunda da conexão entre corpo e mente, permitindo que os praticantes se tornem mais conscientes de como seus hábitos de uso do corpo impactam sua saúde e bem-estar.",
-      "Esse método pode ser aplicado a qualquer atividade da sua rotina diária, seja no trabalho, em práticas esportivas, em sua performance ou em hobbies.",
-      "Ao adotar a Técnica Alexander, você promove um estilo de vida mais equilibrado e saudável."
-    ],
+    "question": "O que é a técnica Alexander?",
+    "answer": "A Técnica Alexander, desenvolvida por Frederick Matthias Alexander no final do século 19, é um método de reeducação psico-física que promove o aprendizado orgânico da estrutura e do funcionamento natural do corpo humano como um todo. Essa abordagem enfatiza a compreensão profunda da conexão entre corpo e mente, permitindo que os praticantes se tornem mais conscientes de como seus hábitos de uso do corpo impactam sua saúde e bem-estar. Esse método pode ser aplicado a qualquer atividade da sua rotina diária, seja no trabalho, em práticas esportivas, em sua performance ou em hobbies. Ao adotar a Técnica Alexander, você promove um estilo de vida mais equilibrado e saudável.",
     "image_caption": "F.M. Alexander – Fundador da Técnica Alexander"
   },
   "for_who": {
-    "title": "Para Quem É?",
-    "description": "A Técnica Alexander é para qualquer pessoa que queira melhorar sua postura, aliviar tensões e dores musculares, ou simplesmente se movimentar de forma mais leve e eficiente. De forma mais específica, ela é especialmente benéfica para",
-    "cards": {
-      "card_1": {
-        "title": "Pessoas Com Dores Crônicas",
-        "description": "Quem sofre com hérnia de disco, dores nas costas, no pescoço ou tensão muscular pode encontrar alívio ao aprender a usar o corpo de maneira mais equilibrada."
+    "question": "Para quem é?",
+    "answers": [
+      {
+        "answer": "Pessoas com dores crônicas",
+        "answer_detail": "Quem sofre com hérnia de disco, dores nas costas, no pescoço ou tensão muscular pode encontrar alívio ao aprender a usar o corpo de maneira mais equilibrada."
       },
-      "card_2": {
-        "title": "Profissionais Que Dependem Do Corpo",
-        "description": "Músicos, atores, bailarinos, atletas, e terapeutas usam a Técnica para melhorar desempenho, evitar lesões e ganhar mais fluidez nos movimentos."
+      {
+        "answer": "Profissionais que dependem do corpo",
+        "answer_detail": "Músicos, atores, bailarinos, atletas, e terapeutas usam a Técnica para melhorar desempenho, evitar lesões e ganhar mais fluidez nos movimentos."
       },
-      "card_3": {
-        "title": "Quem Sente Estresse e Ansiedade No Corpo",
-        "description": "A Técnica ajuda a soltar tensões desnecessárias e promove mais consciência corporal, trazendo um bem-estar geral."
+      {
+        "answer": "Quem sente estresse e ansiedade no corpo",
+        "answer_detail": "A Técnica ajuda a soltar tensões desnecessárias e promove mais consciência corporal, trazendo um bem-estar geral."
       },
-      "card_4": {
-        "title": "Quem Busca Qualidade de Vida",
-        "description": "Se você sente que poderia se mover com mais liberdade e menos esforço no dia a dia, a Técnica pode ser um ótimo caminho!"
+      {
+        "answer": "Quem busca qualidade de vida",
+        "answer_detail": "Se você sente que poderia se mover com mais liberdade e menos esforço no dia a dia, a Técnica pode ser um ótimo caminho!"
       }
-    }
+    ]
   },
   "for_what": {
-    "title": "Faz Bem Para Quê?",
-    "cards": {
-      "card_1": {
-        "title": "Alívio Muscular e Postural",
-        "description": "Reduz tensão muscular, melhora a postura, equilíbrio e coordenação, e pode eliminar dores musculoesqueléticas."
+    "question": "Faz bem para quê?",
+    "answers": [
+      {
+        "answer": "Alívio muscular e postural",
+        "answer_detail": "Reduz tensão muscular, melhora a postura, equilíbrio e coordenação, e pode eliminar dores musculoesqueléticas."
       },
-      "card_2": {
-        "title": "Bem-Estar e Saúde Mental",
-        "description": "Reduz o estresse e a ansiedade, promovendo maior autoconfiança e autocontrole."
+      {
+        "answer": "Bem-estar e saúde mental",
+        "answer_detail": "Reduz o estresse e a ansiedade, promovendo maior autoconfiança e autocontrole."
       },
-      "card_3": {
-        "title": "Respiração e Expressão",
-        "description": "Melhora a respiração e a voz, aumentando a eficiência em atividades diárias e aprimorando a performance artística."
+      {
+        "answer": "Respiração e expressão",
+        "answer_detail": "Melhora a respiração e a voz, aumentando a eficiência em atividades diárias e aprimorando a performance artística."
       },
-      "card_4": {
-        "title": "Vitalidade e Energia",
-        "description": "Aumenta a vitalidade e promove maior consciência do próprio corpo e mente."
+      {
+        "answer": "Vitalidade e energia",
+        "answer_detail": "Aumenta a vitalidade e promove maior consciência do próprio corpo e mente."
       },
-      "card_5": {
-        "title": "Desempenho e Qualidade de Vida",
-        "description": "Otimiza o desempenho em tarefas diárias e atividades físicas, tornando os movimentos mais eficientes e naturais."
+      {
+        "answer": "Desempenho e qualidade de vida",
+        "answer_detail": "Otimiza o desempenho em tarefas diárias e atividades físicas, tornando os movimentos mais eficientes e naturais."
       }
-    }
+    ]
   },
   "cons": {
-    "title": "Tem Contra-Indicações?",
-    "cards": {
-      "card_1": {
-        "title": "Não!",
-        "description": "A Técnica Alexander não tem contra-indicações no sentido tradicional, pois ela não é um tratamento médico ou uma terapia invasiva. Como se trata de um método de reeducação psico- física, qualquer pessoa pode aprender e aplicar os princípios no dia a dia."
+    "question": "Tem contra-indicações?",
+    "answers": [
+      {
+        "answer": "Não!",
+        "answer_detail": "A Técnica Alexander não tem contra-indicações no sentido tradicional, pois ela não é um tratamento médico ou uma terapia invasiva. Como se trata de um método de reeducação psico- física, qualquer pessoa pode aprender e aplicar os princípios no dia a dia."
       },
-      "card_2": {
-        "title": "Qualquer Pessoa Pode Se Beneficiar",
-        "description": "No geral, qualquer pessoa pode se beneficiar, desde que esteja aberta a explorar novas formas de se movimentar e se relacionar com o próprio corpo."
+      {
+        "answer": "Qualquer pessoa pode se beneficiar",
+        "answer_detail": "No geral, qualquer pessoa pode se beneficiar, desde que esteja aberta a explorar novas formas de se movimentar e se relacionar com o próprio corpo."
       },
-      "card_3": {
-        "title": "Porém",
-        "description": "A Técnica Alexander não oferece resultados instantâneos. Ela é um processo de aprendizado e mudança de hábitos que traz benefícios graduais ao longo do tempo."
+      {
+        "answer": "Porém",
+        "answer_detail": "A Técnica Alexander não oferece resultados instantâneos. Ela é um processo de aprendizado e mudança de hábitos que traz benefícios graduais ao longo do tempo."
       }
-    }
+    ]
   },
   "quantity": {
-    "title": "Quantas Aulas Preciso?",
-    "description": "O número de aulas varia de pessoa para pessoa, mas aqui vai um guia geral para te ajudar a entender melhor.",
-    "cards": {
-      "card_1": {
-        "title": "Sentindo Os Primeiros Benefícios",
-        "description": "Já na primeira aula você pode perceber mudanças na postura, na respiração e na sensação de alívio de tensões."
+    "question": "Quantas aulas preciso?",
+    "answers": [
+      {
+        "answer": "Sentindo os primeiros benefícios",
+        "answer_detail": "Já na primeira aula você pode perceber mudanças na postura, na respiração e na sensação de alívio de tensões."
       },
-      "card_2": {
-        "title": "Percebendo Mudanças Consistentes",
-        "description": "Com cerca de 10 a 20 aulas, as pessoas já começam a integrar os princípios da Técnica no seu dia a dia e notar transformações mais duradouras."
+      {
+        "answer": "Percebendo mudanças consistentes",
+        "answer_detail": "Com cerca de 10 a 20 aulas, as pessoas já começam a integrar os princípios da Técnica no seu dia a dia e notar transformações mais duradouras."
       },
-      "card_3": {
-        "title": "Aprofundando o Aprendizado",
-        "description": "Muitas pessoas fazem entre 30 e 40 aulas para consolidar novos padrões de uso do corpo e desenvolver autonomia na aplicação da Técnica."
+      {
+        "answer": "Aprofundando o aprendizado",
+        "answer_detail": "Muitas pessoas fazem entre 30 e 40 aulas para consolidar novos padrões de uso do corpo e desenvolver autonomia na aplicação da Técnica."
       },
-      "card_4": {
-        "title": "Aprofundando-se Continuamente",
-        "description": "Assim como tocar um instrumento ou praticar yoga, algumas pessoas escolhem continuar tendo aulas regularmente para se aprofundar cada vez mais no uso de si."
+      {
+        "answer": "Aprofundando-se continuamente",
+        "answer_detail": "Assim como tocar um instrumento ou praticar yoga, algumas pessoas escolhem continuar tendo aulas regularmente para se aprofundar cada vez mais no uso de si."
       }
-    }
+    ]
   },
   "professors": {
-    "title": "Os Professores",
+    "title": "Os professores",
     "cards": {
       "card_1": {
         "name": "Geórgia Dias",
         "position": "Diretora",
         "description": "Formada como professora da Técnica Alexander em 2004 na ATON (Alexander Techniek Opleiding Nederland), em Amsterdã, Holanda. Fundou a EITA – Escola Internacional da Técnica Alexander, em Fortaleza, no ano de 2022.",
-        "button": "veja meu cv"
+        "button": "Veja meu cv"
       },
       "card_2": {
         "name": "Reinaldo Renzo",
         "position": "Co-diretor",
         "description": "Formado em 1995 no Alexander Training Centre, em Brighton, Inglaterra. Fundador da EBTA – Escola Brasileira da Técnica Alexander, a primeira escola de formação de professores da técnica no Brasil.",
-        "button": "veja meu cv"
+        "button": "Veja meu cv"
       },
       "card_3": {
         "name": "Merran Poplar",
         "position": "Moderadora",
         "description": "Professora da Técnica Alexander desde 1994, com formação em escolas renomadas na Inglaterra, Holanda e EUA. É moderadora na EITA e co-diretora da ESTAR, no Rio de Janeiro.",
-        "button": "veja meu cv"
+        "button": "Veja meu cv"
       },
       "card_4": {
         "name": "Thomas Gerretsen",
-        "position": "Professor Assistente",
+        "position": "Professor assistente",
         "description": "Primeiro professor formado pela EITA, graduado em 2025. Atualmente, atua como professor assistente na escola.",
-        "button": "veja meu cv"
+        "button": "Veja meu cv"
       }
     }
   }
