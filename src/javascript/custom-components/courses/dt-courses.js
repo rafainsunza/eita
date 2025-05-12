@@ -19,7 +19,6 @@ class DtCourses extends HTMLElement {
         this.attachShadow({ mode: 'open' });
         this.shadowRoot.appendChild(template.content.cloneNode(true));
 
-        this.backToTopBtn = this.shadowRoot.querySelector('.back-to-top-btn');
         const sectionGroup = this.shadowRoot.querySelector('.section-group');
 
         // Append title
@@ -103,30 +102,7 @@ class DtCourses extends HTMLElement {
 
         sectionContainerVocal.innerHTML = sectionVocalContent;
         sectionGroup.appendChild(sectionContainerVocal);
-
-
-        // event listeners
-        document.addEventListener('submenu-click', (e) => this.handleScrollClick(e));
-        this.backToTopBtn.addEventListener('click', (e) => this.handleScrollClick(e));
     }
-
-    handleScrollClick(e) {
-        const navbar = document.querySelector('dt-navbar');
-        const clickedSubmenuIsCourses = e.detail.clickedSubmenu === navbar.shadowRoot.querySelector('.submenu.courses')
-        const backToTopClicked = e.target.closest('button') === this.backToTopBtn;
-
-        console.log(e.target)
-
-        if (!clickedSubmenuIsCourses && !backToTopClicked) { return }
-
-        navbar.closeNav()
-        scrollToSection(
-            this.shadowRoot.querySelector('.all'),
-            this.shadowRoot.querySelector('.' + e.detail.scrollTargetClass),
-            backToTopClicked
-        )
-    }
-
 }
 customElements.define('dt-courses', DtCourses);
 

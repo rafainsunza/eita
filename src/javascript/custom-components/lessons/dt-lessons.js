@@ -19,8 +19,6 @@ class DtLessons extends HTMLElement {
         this.attachShadow({ mode: 'open' });
         this.shadowRoot.appendChild(template.content.cloneNode(true));
 
-        this.backToTopBtn = this.shadowRoot.querySelector('.back-to-top-btn');
-
         const lessonsWrapper = this.shadowRoot.querySelector('.lessons-wrapper');
 
         const lessonsContainer = document.createElement('div');
@@ -61,25 +59,7 @@ class DtLessons extends HTMLElement {
         fetchImage('./assets/images/group-lesson-3.jpg', imgContainers[1], 'lessons-card-image');
         // fetchImage('./assets/images/group-lesson-4.jpg', imgContainers[4], 'section-content-image');
 
-        document.addEventListener('submenu-click', (e) => this.handleScrollClick(e));
-        this.backToTopBtn.addEventListener('click', (e) => this.handleScrollClick(e));
     }
-
-    handleScrollClick(e) {
-        const navbar = document.querySelector('dt-navbar');
-        const clickedSubmenuIsLessons = e.detail.clickedSubmenu === navbar.shadowRoot.querySelector('.submenu.lessons')
-        const backToTopClicked = e.target.closest('button') === this.backToTopBtn;
-
-        if (!clickedSubmenuIsLessons && !backToTopClicked) { return }
-
-        navbar.closeNav()
-        scrollToSection(
-            this.shadowRoot.querySelector('.all'),
-            this.shadowRoot.querySelector('.' + e.detail.scrollTargetClass),
-            backToTopClicked
-        )
-    }
-
 }
 customElements.define('dt-lessons', DtLessons);
 

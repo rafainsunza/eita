@@ -125,7 +125,6 @@ class DtAbout extends HTMLElement {
     }
 
     disconnectedCallback() {
-        accordionButtons.map(button => button.removeEventListener('click', this.handleAccordionClick));
         window.removeEventListener('resize', this.handleWindowResize);
     }
 

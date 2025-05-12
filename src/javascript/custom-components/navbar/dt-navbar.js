@@ -1,5 +1,6 @@
 import html from './dt-navbar.html';
 import style from './dt-navbar.component.sass';
+import navbarData from './navbar.json';
 
 import { fetchImage } from '../../utils';
 
@@ -18,120 +19,95 @@ class DtNavbar extends HTMLElement {
         this.attachShadow({ mode: 'open' });
         this.shadowRoot.appendChild(template.content.cloneNode(true));
 
-        this.nav = this.shadowRoot.querySelector('.nav');
-        this.navItems = this.shadowRoot.querySelector('.nav-items');
-        this.navLinks = this.shadowRoot.querySelectorAll('.nav-link');
-        this.openButton = this.shadowRoot.querySelector('.open-button');
-        this.closeButton = this.shadowRoot.querySelector('.close-button');
-        this.submenus = this.shadowRoot.querySelectorAll('.submenu');
+        const navbarContainer = this.shadowRoot.querySelector('.navbar-container');
+        const navbarLogoContainer = this.shadowRoot.querySelector('.navbar-logo-container');
+        fetchImage('../../../assets/icons/eita_logo.png', navbarLogoContainer, 'navbar-logo');
 
-        fetchImage('./assets/icons/eita_logo.png', this.nav.querySelector('.home-link'), 'logo')
-        fetchImage('./assets/icons/favicon.png', this.navItems.querySelector('.logo-button-container'), 'logo-small');
+        // Create and append navbar toggle buttons
+        const navbarToggleContainer = this.shadowRoot.querySelector('.navbar-toggle-container');
+        const openIcon = '<svg class="navbar-toggle-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M0 96C0 78.3 14.3 64 32 64l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 128C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 288c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32L32 448c-17.7 0-32-14.3-32-32s14.3-32 32-32l384 0c17.7 0 32 14.3 32 32z"/></svg>';
+        const closeIcon = '<svg class="navbar-toggle-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg>';
 
-        this.openButton.addEventListener('click', () => { this.openNav() });
-        this.closeButton.addEventListener('click', () => { this.closeNav() });
-        this.navLinks.forEach((link) => {
-            link.addEventListener('click', (e) => {
-                this.handleNavClick(e);
-                this.toggleSubmenu(e);
-            })
-        });
-        window.addEventListener('resize', () => {
-            if (window.innerWidth >= 768) {
-                const dropdownButtons = this.shadowRoot.querySelectorAll('.dropdown-button');
-                const submenus = this.shadowRoot.querySelectorAll('.submenu');
+        const openButton = document.createElement('button');
+        const closeButton = document.createElement('button');
 
-                dropdownButtons.forEach((button) => button.classList.remove('open'));
-                submenus.forEach((menu) => menu.classList.remove('open'));
-                this.navItems.classList.remove('open');
-            }
-        });
+        openButton.classList.add('navbar-toggle-button');
+        closeButton.classList.add('navbar-toggle-button', 'hidden');
 
-        this.submenus.forEach((menu) => {
-            menu.addEventListener('mouseleave', () => {
-                if (window.innerWidth >= 768) {
-                    const dropdownButtons = this.shadowRoot.querySelectorAll('.dropdown-button');
+        openButton.innerHTML = openIcon;
+        closeButton.innerHTML = closeIcon;
+        navbarToggleContainer.appendChild(openButton);
+        navbarToggleContainer.appendChild(closeButton);
 
-                    dropdownButtons.forEach((button) => button.classList.remove('open'));
-                    menu.classList.remove('open');
-                }
-            });
+        // Create and append navbar items
+        const componentNames = ['home', 'about', 'lessons', 'courses', 'schedule', 'contact'];
+        const nav = document.createElement('nav');
+        nav.classList.add('navbar-nav')
+        const navContent = `
+            <ul class="navbar-list">
+                ${Object.values(navbarData.link_texts).map((text, index) => `
+                        <li class="navbar-item">
+                            <button class="navbar-button ${componentNames[index]}">${text}</button>
+                        </li>
+                    `).join('')}
+            </ul>
 
-            menu.addEventListener('click', (e) => {
-                const clickedLink = e.target;
-                const clickedSubmenu = clickedLink.parentElement;
-                const scrollTargetClass = clickedLink.classList[1];
+        `;
+        nav.innerHTML = navContent;
+        navbarContainer.appendChild(nav);
 
-                this.appendCustomElement(clickedSubmenu.classList[1]);
+        const navbarButtons = Array.from(this.shadowRoot.querySelectorAll('.navbar-button'));
 
-                setTimeout(() => {
-                    const event = new CustomEvent('submenu-click', {
-                        detail: {
-                            scrollTargetClass: scrollTargetClass,
-                            clickedSubmenu: clickedSubmenu
-                        },
-                        bubbles: true,
-                        composed: true
-                    })
-
-                    this.dispatchEvent(event);
-                }, 50)
-            })
-        });
+        navbarButtons.map(button => button.addEventListener('click', (e) => this.appendCustomElement(e, nav, closeButton, openButton)))
+        openButton.addEventListener('click', (e) => this.toggleNavMenu(e, openButton, closeButton, nav));
+        closeButton.addEventListener('click', (e) => this.toggleNavMenu(e, openButton, closeButton, nav));
+        navbarLogoContainer.addEventListener('click', (e) => this.appendCustomElement(e, nav, closeButton, openButton));
+        window.addEventListener('resize', () => this.handleResize(openButton, closeButton, nav));
     }
 
-    handleNavClick(e) {
-        const clickedNav = e.target;
+    disconnectedCallback() {
+        window.removeEventListener('resize', this.handleResize);
+    }
 
-        if (clickedNav.tagName === 'A') {
-            const dropdownButtons = this.shadowRoot.querySelectorAll('.dropdown-button');
-            const submenus = this.shadowRoot.querySelectorAll('.submenu');
-            dropdownButtons.forEach((button) => button.classList.remove('open'));
-            submenus.forEach((menu) => menu.classList.remove('open'));
-            this.navItems.classList.remove('open');
+    handleResize(openButton, closeButton, nav) {
+        const navIsOpen = nav.classList.contains('open');
 
-            this.appendCustomElement(clickedNav.classList[1]);
+        if (navIsOpen && window.innerWidth >= 768) {
+            nav.classList.remove('open');
+            openButton.classList.remove('hidden');
+            closeButton.classList.add('hidden');
         }
     }
 
-    toggleSubmenu(e) {
-        const dropdownButton = e.target.closest('button');
-        if (!dropdownButton) { return }
-        const nextSibling = e.target.closest('button').nextElementSibling;
-        if (!nextSibling) { return }
+    toggleNavMenu(e, openButton, closeButton, nav) {
+        const button = e.target.closest('button');
 
-        const dropdownButtons = this.shadowRoot.querySelectorAll('.dropdown-button');
-        const submenus = this.shadowRoot.querySelectorAll('.submenu');
-        const isOpen = nextSibling.classList.contains('open');
+        if (button === openButton) {
+            openButton.classList.add('hidden');
+            closeButton.classList.remove('hidden');
+            nav.classList.add('open');
+        }
 
-        dropdownButtons.forEach((button) => button.classList.remove('open'));
-        submenus.forEach((menu) => menu.classList.remove('open'));
-
-        if (!isOpen) {
-            nextSibling.classList.add('open');
-            dropdownButton.classList.add('open')
+        if (button === closeButton) {
+            openButton.classList.remove('hidden');
+            closeButton.classList.add('hidden');
+            nav.classList.remove('open');
         }
     }
 
-    openNav() {
-        this.navItems.classList.add('open');
-    }
-
-    closeNav() {
-        const submenus = this.shadowRoot.querySelectorAll('.submenu');
-
-        submenus.forEach((menu) => menu.classList.remove('open'));
-        this.navItems.classList.remove('open');
-    }
-
-    appendCustomElement(className) {
-        const element = document.createElement(`dt-${className}`);
+    appendCustomElement(e, nav, closeButton, openButton) {
+        const button = e.target.closest('button');
+        const componentName = button.classList[1];
+        const element = document.createElement(`dt-${componentName}`);
         const main = document.querySelector('main');
         const children = Array.from(main.children);
 
-        children.forEach((child) => main.removeChild(child));
-
+        children.map(child => main.removeChild(child));
         main.appendChild(element);
+
+        nav.classList.remove('open');
+        closeButton.classList.add('hidden');
+        openButton.classList.remove('hidden');
     }
 
 }

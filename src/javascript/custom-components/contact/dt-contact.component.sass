@@ -70,14 +70,15 @@ iframe
             display: grid
             max-width: variables.$breakpoint-lg
             margin: 0 auto
-            padding: 20px
+            padding: 20px 20px 0 20px
             @media (min-width: variables.$breakpoint-md)
+                height: calc(100dvh - ( variables.$header-height + variables.$min-title-height))
                 grid-template-columns: repeat(2, 1fr)
                 column-gap: 50px
 
         &-list
             display: grid
-            row-gap: 10px
+            row-gap: 5px
 
             &-item:nth-child(3)
                 & .contact-card-link
@@ -117,7 +118,7 @@ iframe
 
             & input
                 padding: 7.5px 15px
-                margin: 10px 0 15px 0
+                margin: 10px 0
                 border: none
                 border-radius: 2.5px
                 outline: 1px solid variables.$light-grey
@@ -134,7 +135,7 @@ iframe
                 border: none
                 border-radius: 2.5px
                 outline: 1px solid variables.$light-grey
-                margin: 10px 0 15px 0
+                margin: 10px 0
                 transition: transform 0.2s
 
                 &:focus

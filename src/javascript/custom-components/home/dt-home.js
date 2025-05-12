@@ -50,7 +50,6 @@ class DtHome extends HTMLElement {
             './assets/images/lesson-ball.jpg',
 
         ];
-        const backToTopButton = this.shadowRoot.querySelector('.back-to-top-btn');
 
         introImages.forEach((image, index) => {
             fetchImage(image, introImageContainers[index], 'home-card-image');
@@ -58,7 +57,6 @@ class DtHome extends HTMLElement {
 
         // fetchImage('./assets/images/interior-1.jpg', this.shadowRoot.querySelector('.home-cover-image-container'), 'home-cover-image');
 
-        // backToTopButton.addEventListener('click', (e) => { this.scrollToTop(e) });
         // document.addEventListener("DOMContentLoaded", () => { this.animateOnScroll() });
     }
 
