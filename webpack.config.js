@@ -2,7 +2,6 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-
 module.exports = (env, argv) => {
     const isProduction = argv.mode === 'production';
 
@@ -13,12 +12,23 @@ module.exports = (env, argv) => {
             path: path.resolve(__dirname, 'dist'),
             filename: '[name].[contenthash].js',
             clean: true,
-            assetModuleFilename: 'assets/[name][ext]'
+            assetModuleFilename: 'assets/[name][ext]',
+        },
+        resolve: {
+            fallback: {
+                stream: require.resolve('stream-browserify'),
+                path: require.resolve('path-browserify'),
+                os: require.resolve('os-browserify/browser'),
+                constants: require.resolve('constants-browserify'),
+                fs: false,
+                child_process: false,
+                worker_threads: false,
+            },
         },
         devtool: isProduction ? false : 'source-map',
         devServer: {
             static: {
-                directory: path.resolve(__dirname, 'src')
+                directory: path.resolve(__dirname, 'src'),
             },
             port: 3000,
             open: true,
@@ -33,10 +43,10 @@ module.exports = (env, argv) => {
                     use: [
                         {
                             loader: 'css-loader',
-                            options: { exportType: 'string' }
+                            options: { exportType: 'string' },
                         },
-                        'sass-loader'
-                    ]
+                        'sass-loader',
+                    ],
                 },
                 {
                     test: /\.(scss|sass)$/i,
@@ -44,15 +54,15 @@ module.exports = (env, argv) => {
                     use: [
                         isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
                         'css-loader',
-                        'sass-loader'
-                    ]
+                        'sass-loader',
+                    ],
                 },
                 {
                     test: /\.css$/,
                     use: [
                         isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
-                        'css-loader'
-                    ]
+                        'css-loader',
+                    ],
                 },
                 {
                     test: /\.js$/,
@@ -60,33 +70,34 @@ module.exports = (env, argv) => {
                     use: {
                         loader: 'babel-loader',
                         options: {
-                            presets: [['@babel/preset-env', { targets: '> 0.25%, not dead' }]]
-
-                        }
-                    }
+                            presets: [['@babel/preset-env', { targets: '> 0.25%, not dead' }]],
+                        },
+                    },
                 },
                 {
                     test: /\.(png|svg|jpg|jpeg|gif)$/i,
-                    type: 'asset/resource'
+                    type: 'asset/resource',
                 },
                 {
                     test: /\.html$/,
-                    use: 'html-loader'
-                }
-            ]
+                    use: 'html-loader',
+                },
+            ],
         },
         plugins: [
             new HtmlWebpackPlugin({
                 filename: 'index.html',
                 template: 'src/template.html',
-                minify: isProduction ? {
-                    collapseWhitespace: true,
-                    removeComments: true,
-                    removeRedundantAttributes: true,
-                    useShortDoctype: true
-                } : false
+                minify: isProduction
+                    ? {
+                        collapseWhitespace: true,
+                        removeComments: true,
+                        removeRedundantAttributes: true,
+                        useShortDoctype: true,
+                    }
+                    : false,
             }),
-            ...(isProduction ? [new MiniCssExtractPlugin({ filename: '[name].[contenthash].css' })] : [])
-        ]
+            ...(isProduction ? [new MiniCssExtractPlugin({ filename: '[name].[contenthash].css' })] : []),
+        ],
     };
 };

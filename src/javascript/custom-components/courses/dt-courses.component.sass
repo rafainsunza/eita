@@ -90,6 +90,7 @@
     grid-auto-columns: 100%
     overflow-x: auto
     scrollbar-width: none
+    scroll-snap-type: x mandatory
 
     &-title
         text-align: center
@@ -119,6 +120,7 @@
         justify-content: center
         gap: 25px
         background-color: rgba(100, 190, 240, 0.15)
+        scroll-snap-align: start
 
         @media (min-width: variables.$breakpoint-sm-md)
             padding: 50px

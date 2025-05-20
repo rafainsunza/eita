@@ -1,6 +1,21 @@
 {
   "title": "EITA",
   "subtitle": "<span class='subtitle-span'>Movimento fluido</span> <span class='subtitle-span'>Corpo e mente em harmonia</span> <span class='subtitle-span'>Vida transformada</span>",
+  "gallery": {
+    "title": "Descubra Nosso Espaço e Momentos ",
+    "images": [
+      "./assets/images/gallery/interior-1.jpg",
+      "./assets/images/gallery/interior-2.jpg",
+      "./assets/images/gallery/interior-3.jpg",
+      "./assets/images/gallery/lesson-ball.jpg",
+      "./assets/images/gallery/individual-lesson-1.jpg",
+      "./assets/images/gallery/individual-lesson-3.jpg",
+      "./assets/images/gallery/individual-lesson-4.jpg",
+      "./assets/images/gallery/group-lesson-3.jpg",
+      "./assets/images/gallery/group-lesson-4.jpg",
+      "./assets/images/gallery/hands.jpg"
+    ]
+  },
   "cards": {
     "card_1": {
       "title": "Quem Somos",

@@ -12,7 +12,7 @@
     min-height: calc(100dvh - variables.$header-height)
 
 .accordion
-    @media (min-width: variables.$breakpoint-lg)
+    @media (min-width: variables.$breakpoint-lg + 40)
         height: max-content
         max-width: variables.$breakpoint-lg
         margin: 20px auto calc((100dvh - (variables.$header-height + variables.$min-title-height + variables.$accordion-height-closed)) / 2) auto
@@ -35,7 +35,7 @@
         & span
             color: variables.$blue
 
-        @media (min-width: variables.$breakpoint-lg)
+        @media (min-width: variables.$breakpoint-lg + 40)
             height: 0
 
         &.open
@@ -193,14 +193,16 @@
             text-align: center
             max-width: 450px
 
-        &-button
+        &-link
             position: relative
             z-index: 1
             color: white
             font-family: gearedSlab
             font-size: 24px
+            text-align: center
             background-color: variables.$blue
-            width: 300px
+            width: 100%
+            max-width: 300px
             padding: 7.5px 15px
             border-radius: 20px
             border: none

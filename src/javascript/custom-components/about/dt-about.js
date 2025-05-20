@@ -22,6 +22,8 @@ class DtAbout extends HTMLElement {
         const aboutWrapper = this.shadowRoot.querySelector('.about-wrapper');
         const aboutContainer = document.createElement('div');
         aboutContainer.classList.add('about-container');
+        const professorCvs = ['../../../assets/professor_cvs/cv_georgia.pdf', '../../../assets/professor_cvs/cv_reinaldo.pdf', '../../../assets/professor_cvs/cv_merran.pdf', '../../../assets/professor_cvs/cv_thomas.pdf'];
+        console.log(professorCvs);
         const keyOrder = ['intro', 'for_who', 'for_what', 'cons', 'quantity', 'professors'];
         const caretIcon = '<svg class="accordion-button-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M9.4 278.6c-12.5-12.5-12.5-32.8 0-45.3l128-128c9.2-9.2 22.9-11.9 34.9-6.9s19.8 16.6 19.8 29.6l0 256c0 12.9-7.8 24.6-19.8 29.6s-25.7 2.2-34.9-6.9l-128-128z"/></svg>';
         const aboutContent = `
@@ -82,7 +84,7 @@ class DtAbout extends HTMLElement {
                         </button>
                         <div class="accordion-content professor">
                             <div class="accordion-content-inner professor">
-                                ${Object.values(data.cards).map(card => {
+                                ${Object.values(data.cards).map((card, index) => {
                     return (`
                                 <div class="accordion-professor-card">
                                     <div class="accordion-professor-card-image-container"></div>
@@ -93,7 +95,7 @@ class DtAbout extends HTMLElement {
                                         <p class="accordion-professor-card-description">${card.description}</p>
                                     </div>
 
-                                    <button class="accordion-professor-card-button">${card.button.toUpperCase()}</button>
+                                    <a class="accordion-professor-card-link" href="${professorCvs[index]}" target="_blank" rel="noopener noreferrer">${card.button.toUpperCase()}</a>
                                 </div>
                             `);
                 }).join('')}

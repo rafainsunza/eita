@@ -102,6 +102,25 @@ class DtCourses extends HTMLElement {
 
         sectionContainerVocal.innerHTML = sectionVocalContent;
         sectionGroup.appendChild(sectionContainerVocal);
+
+
+        const professorSliderButtons = Array.from(this.shadowRoot.querySelectorAll('.professor-slider-indicator'));
+        const vocalSliderButtons = Array.from(this.shadowRoot.querySelectorAll('.vocal-slider-indicator'));
+
+        professorSliderButtons.map(button => button.addEventListener('click', (e) => this.handleSliderButtonClick(e, professorSliderButtons)));
+        vocalSliderButtons.map(button => button.addEventListener('click', (e) => this.handleSliderButtonClick(e, vocalSliderButtons)));
+    }
+
+    handleSliderButtonClick(e, buttons) {
+        const clickedButton = e.target.closest('button');
+        const sliderButtons = buttons;
+        const slider = clickedButton.parentElement.parentElement.querySelector('.slider');
+        const sliderCards = Array.from(slider.querySelectorAll('.slider-card'));
+        const clickedButtonIndex = sliderButtons.indexOf(clickedButton);
+
+        sliderButtons.map(button => button.classList.remove('indicating'));
+        clickedButton.classList.add('indicating');
+        sliderCards[clickedButtonIndex].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
 }
 customElements.define('dt-courses', DtCourses);
