@@ -53,11 +53,8 @@ class DtLessons extends HTMLElement {
         lessonsWrapper.appendChild(lessonsContainer)
 
         const imgContainers = Array.from(this.shadowRoot.querySelectorAll('.lessons-card-image-container'));
-        // fetchImage('./assets/images/hands.jpg', imgContainers[0], 'section-content-image');
         fetchImage('./assets/images/individual-lesson-2.jpg', imgContainers[0], 'lessons-card-image');
-        // fetchImage('./assets/images/individual-lesson-5.jpg', imgContainers[2], 'section-content-image');
         fetchImage('./assets/images/group-lesson-3.jpg', imgContainers[1], 'lessons-card-image');
-        // fetchImage('./assets/images/group-lesson-4.jpg', imgContainers[4], 'section-content-image');
 
     }
 }

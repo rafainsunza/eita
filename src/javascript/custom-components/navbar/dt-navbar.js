@@ -21,7 +21,7 @@ class DtNavbar extends HTMLElement {
 
         const navbarContainer = this.shadowRoot.querySelector('.navbar-container');
         const navbarLogoContainer = this.shadowRoot.querySelector('.navbar-logo-container');
-        fetchImage('../../../assets/icons/eita_logo.png', navbarLogoContainer, 'navbar-logo');
+        fetchImage('./assets/icons/eita_logo.png', navbarLogoContainer, 'navbar-logo');
 
         // Create and append navbar toggle buttons
         const navbarToggleContainer = this.shadowRoot.querySelector('.navbar-toggle-container');

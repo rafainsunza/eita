@@ -106,6 +106,7 @@ iframe
 
         &-form
             display: grid
+            position: relative
 
             &-container
                 margin: 25px 0
@@ -141,3 +142,46 @@ iframe
                     outline: 2px solid variables.$light-blue
                     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1)
                     transform: scale(1.02)
+
+            &-submit-message
+                &-text-content
+                    margin: 0 auto
+
+                &-icon
+                    margin-right: 20px
+                    & svg
+                        height: 25px
+                        width: 25px
+
+                &-container
+                    position: absolute
+                    bottom: -22.5px
+                    left: -100%
+                    visibility: hidden
+                    z-index: 9999
+                    display: flex
+                    align-items: center
+                    width: 100%
+                    min-height: 65px
+                    border-radius: 5px
+                    padding: 10px
+                    background-color: white
+                    transition: left 0.3s ease
+
+                    &.success
+                        visibility: visible
+                        outline: 2px solid green
+                        background-color: #e6f4ea
+                        & .contact-card-form-submit-message-text-content
+                            color: #2e7d32
+                        & .contact-card-form-submit-message-icon svg
+                            fill: #2e7d32
+
+                    &.fail
+                        visibility: visible
+                        outline: 2px solid red
+                        background-color: #fbeaea
+                        & .contact-card-form-submit-message-text-content
+                            color: #c62828
+                        & .contact-card-form-submit-message-icon svg
+                            fill: #c62828

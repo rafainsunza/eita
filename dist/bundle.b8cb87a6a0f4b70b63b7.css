@@ -128,4 +128,4 @@ table {
   border-spacing: 0;
 }
 
-@font-face{font-family:gearedSlab;src:url(assets/GearedSlab.ttf) format("truetype");font-weight:normal;font-style:normal}@font-face{font-family:din;src:url(assets/DINPro-Cond.otf) format("opentype");font-weight:normal;font-style:normal}html,body{min-height:100%;scrollbar-width:thin;scrollbar-color:#097ab3 rgba(0,0,0,0)}body{font-family:"gearedSlab","Roboto",sans-serif;font-size:24px;background-color:#fdfdfd}main{margin-top:100.45px}header{position:fixed;top:0;left:0;width:100%;z-index:9999}
+@font-face{font-family:gearedSlab;src:url(assets/GearedSlab.ttf) format("truetype");font-weight:normal;font-style:normal}@font-face{font-family:din;src:url(assets/DINPro-Cond.otf) format("opentype");font-weight:normal;font-style:normal}html,body{min-height:100%}body{font-family:"gearedSlab","Roboto",sans-serif;font-size:24px;background-color:rgba(100,190,240,.15)}header{background-color:#fff;position:sticky;top:0;left:0;z-index:9999;box-shadow:0 10px 10px -5px rgba(0,0,0,.3)}
