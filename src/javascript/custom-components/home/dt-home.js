@@ -51,7 +51,7 @@ class DtHome extends HTMLElement {
             <div class="image-gallery">
                     <h3 class="image-gallery-title">${homeData.gallery.title}</h3>
 
-                    <button class="image-gallery-navigation-button previous">${arrowLeftIcon}</button>
+                    <button class="image-gallery-navigation-button previous hidden">${arrowLeftIcon}</button>
                     <button class="image-gallery-navigation-button next">${arrowRightIcon}</button>
 
                     <div class="image-gallery-slider">
@@ -70,15 +70,47 @@ class DtHome extends HTMLElement {
         const imageGallerySlides = Array.from(this.shadowRoot.querySelectorAll('.image-gallery-slide'));
         const imageGalleryThumbnailButtons = Array.from(this.shadowRoot.querySelectorAll('.image-gallery-thumbnail-button'));
         const imageGalleryNavigationButtons = Array.from(this.shadowRoot.querySelectorAll('.image-gallery-navigation-button'));
-        imageGalleryThumbnailButtons[0].classList.add('indicating');
-        imageGalleryNavigationButtons[0].classList.add('hidden');
 
         fetchImage('./assets/images/interior-1.jpg', this.shadowRoot.querySelector('.home-top-image-container'), 'home-top-image');
-        Object.values(randomizedImages).map((image, index) => fetchImage(image, imageGalleryThumbnailButtons[index], 'image-gallery-thumbnail-button-image'));
-        Object.values(randomizedImages).map((image, index) => fetchImage(image, imageGallerySlides[index], 'image-gallery-image'));
 
+        Promise.all(randomizedImages.map((image, index) => {
+            return fetchImage(image, imageGalleryThumbnailButtons[index], 'image-gallery-thumbnail-button-image')
+        }))
+            .then(() => Promise.all(randomizedImages.map((image, index) => {
+                return fetchImage(image, imageGallerySlides[index], 'image-gallery-image')
+            })))
+            .then(() => {
+                this.initIntersectionObserver(imageGallerySlides, imageGalleryNavigationButtons);
+            });
+
+        imageGalleryThumbnailButtons[0].classList.add('indicating');
         imageGalleryThumbnailButtons.map(button => button.addEventListener('click', (e) => this.handleThumbnailButtonClick(e, imageGalleryThumbnailButtons, imageGallerySlides)));
         imageGalleryNavigationButtons.map(button => button.addEventListener('click', (e) => this.handleImageGalleryNavigation(e, imageGallerySlides, imageGalleryThumbnailButtons)));
+    }
+
+    initIntersectionObserver(slides, prevNextButtons) {
+        const observerOptions = {
+            root: this.shadowRoot.querySelector('.image-gallery-slider'),
+            threshold: 1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const index = slides.indexOf(entry.target);
+                    const prevButton = prevNextButtons[0];
+                    const nextButton = prevNextButtons[1];
+
+                    console.log(index)
+
+                    index > 0 || index < slides.length - 1 ? prevNextButtons.forEach(button => button.classList.remove('hidden')) : null;
+                    index === 0 ? prevButton.classList.add('hidden') : null;
+                    index === slides.length - 1 ? nextButton.classList.add('hidden') : null;
+                }
+            });
+        }, observerOptions);
+
+        slides.forEach(slide => observer.observe(slide));
     }
 
     handleImageGalleryNavigation(e, slides, buttons) {
@@ -89,7 +121,7 @@ class DtHome extends HTMLElement {
         let currentIndex;
         let targetIndex;
 
-        slides.map((slide, index) => {
+        slides.forEach((slide, index) => {
             const rect = slide.getBoundingClientRect();
             const isVisible = rect.left >= 0 && rect.right <= window.innerWidth;
             isVisible ? currentIndex = index : null;
@@ -101,36 +133,19 @@ class DtHome extends HTMLElement {
 
         if (targetIndex === slides.length || targetIndex === -1 || isNaN(targetIndex)) return
 
-        if (targetIndex > 0 || targetIndex < slides.length - 1) {
-            previousButton.classList.remove('hidden');
-            nextButton.classList.remove('hidden');
-        }
-
-        if (targetIndex === 0) { previousButton.classList.add('hidden'); }
-        if (targetIndex === slides.length - 1) { nextButton.classList.add('hidden'); }
+        buttons.forEach(button => button.classList.remove('indicating'));
+        buttons[targetIndex].classList.add('indicating');
 
         slides[targetIndex].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-
-        buttons.map(button => button.classList.remove('indicating'));
-        buttons[targetIndex].classList.add('indicating');
     }
 
     handleThumbnailButtonClick(e, buttons, slides) {
         const clickedButton = e.target.closest('button');
         const index = buttons.indexOf(clickedButton);
-        const nextButton = this.shadowRoot.querySelector('.image-gallery-navigation-button.next');
-        const previousButton = this.shadowRoot.querySelector('.image-gallery-navigation-button.previous');
-
-        if (index > 0 || index < slides.length - 1) {
-            previousButton.classList.remove('hidden');
-            nextButton.classList.remove('hidden');
-        }
-        if (index === 0) { previousButton.classList.add('hidden') }
-        if (index === slides.length - 1) { nextButton.classList.add('hidden') }
-
-        buttons.map(button => button.classList.remove('indicating'));
-        clickedButton.classList.add('indicating');
         slides[index].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+        buttons.forEach(button => button.classList.remove('indicating'));
+        clickedButton.classList.add('indicating');
     }
 
 
