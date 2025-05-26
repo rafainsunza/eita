@@ -71,17 +71,21 @@ class DtHome extends HTMLElement {
         const imageGalleryThumbnailButtons = Array.from(this.shadowRoot.querySelectorAll('.image-gallery-thumbnail-button'));
         const imageGalleryNavigationButtons = Array.from(this.shadowRoot.querySelectorAll('.image-gallery-navigation-button'));
         imageGalleryThumbnailButtons[0].classList.add('indicating');
+        imageGalleryNavigationButtons[0].classList.add('hidden');
 
         fetchImage('./assets/images/interior-1.jpg', this.shadowRoot.querySelector('.home-top-image-container'), 'home-top-image');
         Object.values(randomizedImages).map((image, index) => fetchImage(image, imageGalleryThumbnailButtons[index], 'image-gallery-thumbnail-button-image'));
         Object.values(randomizedImages).map((image, index) => fetchImage(image, imageGallerySlides[index], 'image-gallery-image'));
 
         imageGalleryThumbnailButtons.map(button => button.addEventListener('click', (e) => this.handleThumbnailButtonClick(e, imageGalleryThumbnailButtons, imageGallerySlides)));
-        imageGalleryNavigationButtons.map(button => button.addEventListener('click', (e) => this.handleThumbnailNavigationButtonClick(e, imageGallerySlides, imageGalleryThumbnailButtons)));
+        imageGalleryNavigationButtons.map(button => button.addEventListener('click', (e) => this.handleImageGalleryNavigation(e, imageGallerySlides, imageGalleryThumbnailButtons)));
     }
 
-    handleThumbnailNavigationButtonClick(e, slides, buttons) {
+    handleImageGalleryNavigation(e, slides, buttons) {
         const clickedButton = e.target.closest('button');
+        const nextButton = this.shadowRoot.querySelector('.image-gallery-navigation-button.next');
+        const previousButton = this.shadowRoot.querySelector('.image-gallery-navigation-button.previous');
+
         let currentIndex;
         let targetIndex;
 
@@ -91,19 +95,25 @@ class DtHome extends HTMLElement {
             isVisible ? currentIndex = index : null;
         });
 
-        if (clickedButton.classList.contains('next')) {
-            targetIndex = currentIndex + 1;
+        if (clickedButton === nextButton) { targetIndex = currentIndex + 1; }
 
-            if (targetIndex === slides.length || isNaN(targetIndex)) return
-            slides[targetIndex].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        if (clickedButton === previousButton) { targetIndex = currentIndex - 1; }
+
+        if (targetIndex === slides.length || targetIndex === -1 || isNaN(targetIndex)) return
+
+
+        if (targetIndex > 0 || targetIndex < slides.length - 1) {
+            previousButton.classList.remove('hidden');
+            nextButton.classList.remove('hidden');
         }
 
-        if (clickedButton.classList.contains('previous')) {
-            targetIndex = currentIndex - 1;
+        if (targetIndex === 0) { previousButton.classList.add('hidden'); }
+        if (targetIndex === slides.length - 1) { nextButton.classList.add('hidden'); }
 
-            if (targetIndex === -1 || isNaN(targetIndex)) return
-            slides[targetIndex].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        }
+
+
+
+        slides[targetIndex].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 
         buttons.map(button => button.classList.remove('indicating'));
         buttons[targetIndex].classList.add('indicating');

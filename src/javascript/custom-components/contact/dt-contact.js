@@ -62,6 +62,8 @@ class DtContact extends HTMLElement {
                             <label for="message">Mensagem</label>
                             <textarea name="message" id="message" required></textarea>
 
+                            <input type="text" name="company" style="display: none" />
+
                             <button type="submit" class="submit-button">Enviar</button>
 
                             <div class="contact-card-form-submit-message-container">
