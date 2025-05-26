@@ -101,7 +101,6 @@ class DtHome extends HTMLElement {
 
         if (targetIndex === slides.length || targetIndex === -1 || isNaN(targetIndex)) return
 
-
         if (targetIndex > 0 || targetIndex < slides.length - 1) {
             previousButton.classList.remove('hidden');
             nextButton.classList.remove('hidden');
@@ -109,9 +108,6 @@ class DtHome extends HTMLElement {
 
         if (targetIndex === 0) { previousButton.classList.add('hidden'); }
         if (targetIndex === slides.length - 1) { nextButton.classList.add('hidden'); }
-
-
-
 
         slides[targetIndex].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 
@@ -122,6 +118,15 @@ class DtHome extends HTMLElement {
     handleThumbnailButtonClick(e, buttons, slides) {
         const clickedButton = e.target.closest('button');
         const index = buttons.indexOf(clickedButton);
+        const nextButton = this.shadowRoot.querySelector('.image-gallery-navigation-button.next');
+        const previousButton = this.shadowRoot.querySelector('.image-gallery-navigation-button.previous');
+
+        if (index > 0 || index < slides.length - 1) {
+            previousButton.classList.remove('hidden');
+            nextButton.classList.remove('hidden');
+        }
+        if (index === 0) { previousButton.classList.add('hidden') }
+        if (index === slides.length - 1) { nextButton.classList.add('hidden') }
 
         buttons.map(button => button.classList.remove('indicating'));
         clickedButton.classList.add('indicating');
