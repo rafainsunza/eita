@@ -86,9 +86,12 @@ class DtContact extends HTMLElement {
             const formData = new FormData(form);
 
             try {
-                const response = await fetch('/send-email.php', {
+                const response = await fetch(form.action, {
                     method: 'POST',
-                    body: formData
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
                 });
 
                 if (response.ok) {
