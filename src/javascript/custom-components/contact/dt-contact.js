@@ -49,7 +49,7 @@ class DtContact extends HTMLElement {
                     </div>
 
                     <div class="contact-card-form-container">
-                        <form action="/send-email.php" method="POST" class="contact-card-form">
+                        <form action="https://formspree.io/f/mjkwnbap" method="POST" class="contact-card-form">
                             <label for="name">Nome</label>
                             <input type="text" id="name" name="name" required />
 
@@ -62,7 +62,7 @@ class DtContact extends HTMLElement {
                             <label for="message">Mensagem</label>
                             <textarea name="message" id="message" required></textarea>
 
-                            <input type="text" name="company" style="display: none" />
+                            <input type="text" name="_gotcha" style="display: none" aria-hidden="true" tabindex="-1"/>
 
                             <button type="submit" class="submit-button">Enviar</button>
 
