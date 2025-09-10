@@ -1,6 +1,7 @@
 import html from './dt-navbar.html';
 import style from './dt-navbar.component.sass';
 import navbarData from './navbar.json';
+import contactData from '../contact/contact.json';
 
 import { fetchImage } from '../../utils';
 
@@ -102,8 +103,27 @@ class DtNavbar extends HTMLElement {
         const main = document.querySelector('main');
         const children = Array.from(main.children);
 
+
         children.map(child => main.removeChild(child));
         main.appendChild(element);
+
+
+        if (element.tagName.toLowerCase() === 'dt-contact') {
+            const telData = contactData.contact_options.tel;
+            const whatsappLink = document.createElement('a');
+
+            whatsappLink.setAttribute('slot', 'whatsapp-link');
+            whatsappLink.href = telData.href;
+            whatsappLink.target = "_blank";
+            whatsappLink.rel = "noopener noreferrer";
+            whatsappLink.classList.add('contact-card-link');
+            whatsappLink.innerHTML = `
+            ${telData.icon}
+            ${telData.contact}
+            `;
+
+            element.appendChild(whatsappLink);
+        }
 
         nav.classList.remove('open');
         closeButton.classList.add('hidden');

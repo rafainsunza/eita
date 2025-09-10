@@ -33,47 +33,46 @@ class DtContact extends HTMLElement {
 
                     <div class="contact-card-info">
                         <ul class="contact-card-list">
-                            ${Object.values(contactData.contact_options).map(option => `
+                            ${Object.values(contactData.contact_options).map((option, index) => `
                                     <li class="contact-card-list-item">
-                                        <a class="contact-card-link" href="${option.href}" target="_blank" rel="noopener noreferrer">
-                                            ${option.icon}
-                                            ${option.contact}
-                                        </a>
+                                        ${index === 0 ? `<slot name="whatsapp-link"></slot>` : `<a class="contact-card-link" href="${option.href}" target="_blank" rel="noopener noreferrer">${option.icon} ${option.contact}</a>`
+                }
                                     </li>
-                            `).join('')}
+                            `).join('')
+            }
 
                             <li class="contact-card-list-item">
-                                ${contactData.map_iframe}
-                            </li>
-                        </ul>
-                    </div>
+    ${contactData.map_iframe}
+</li>
+                        </ul >
+                    </div >
 
-                    <div class="contact-card-form-container">
-                        <form action="https://formspree.io/f/mjkwnbap" method="POST" class="contact-card-form">
-                            <label for="name">Nome</label>
-                            <input type="text" id="name" name="name" required />
+    <div class="contact-card-form-container">
+        <form action="https://formspree.io/f/mjkwnbap" method="POST" class="contact-card-form">
+            <label for="name">Nome</label>
+            <input type="text" id="name" name="name" required />
 
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" required />
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required />
 
-                            <label for="phone">Telefone (opcional)</label>
-                            <input type="tel" id="phone" name="phone" />
+            <label for="phone">Telefone (opcional)</label>
+            <input type="tel" id="phone" name="phone" />
 
-                            <label for="message">Mensagem</label>
-                            <textarea name="message" id="message" required></textarea>
+            <label for="message">Mensagem</label>
+            <textarea name="message" id="message" required></textarea>
 
-                            <input type="text" name="_gotcha" style="display: none" aria-hidden="true" tabindex="-1"/>
+            <input type="text" name="_gotcha" style="display: none" aria-hidden="true" tabindex="-1" />
 
-                            <button type="submit" class="submit-button">Enviar</button>
+            <button type="submit" class="submit-button">Enviar</button>
 
-                            <div class="contact-card-form-submit-message-container">
-                                <div class="contact-card-form-submit-message-icon"></div>
-                                <p class="contact-card-form-submit-message-text-content"></p>
-                            </div>
-                        </form>    
-                    </div>
-                </div>
-            `;
+            <div class="contact-card-form-submit-message-container">
+                <div class="contact-card-form-submit-message-icon"></div>
+                <p class="contact-card-form-submit-message-text-content"></p>
+            </div>
+        </form>
+    </div>
+                </div >
+    `;
 
         contactContainer.innerHTML = contactContent;
         contactWrapper.appendChild(contactContainer);
